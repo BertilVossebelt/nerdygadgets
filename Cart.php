@@ -13,42 +13,36 @@ include __DIR__ . "/header.php";
 
 <?php
 $cart = getCart();
+echo createTable($cart);
 
-if (isset($_GET["submit"])) {
-    $stockItemID = $_GET["stockItemID"];
-    $stockItemPrice = $_GET["SellPrice"];
-    addProductToCart($stockItemID);// maak gebruik van geïmporteerde functie uit cartfuncties.php
-//    print("Product toegevoegd aan <a href='cart.php'>je winkelmandje!</a>");
-}
-$stockItemID = $_GET["stockItemID"];
-$stockItemPrice = $_GET["SellPrice"];
-$cart = getCart();
-function createTable($cart, $stockItemPrice)
+function createTable($cart)
 {
     $table = "<table border='1'><tr><th>product</th><th>aantal</th><th>prijs</th><tr>";
-    $price = 0;
-    $i = 0;
-    foreach ($cart as $item => $amount) {
-        $i++;
-        $price += $stockItemPrice * $amount;
-        $productUrl = "http://localhost/workshop_sessies/viewCart.php?id=$item";
+    $total = 0;
+
+    foreach ($cart as $id => $item) {
+        $amount = $item['amount'];
+        $price = round($item['price'] * $amount, 2);
+        $total += $price;
+
         $table .= "<tr>
-                        <th><a href='$productUrl'>$item</a></th>
+                        <th><a href='http://localhost/nerdygadgets/view.php?id=$id'>$id</a></th>
                         <th>$amount</th>
-                        <th>$stockItemPrice</th>
+                        <th>$price</th>
                    </tr>";
-        if ($i === count($cart)) {
-            $table .= "<tr><th>Totaal:</th><th>$price</th></table>";
+
+        if (end($cart) === $item) {
+            $total = round($total, 2);
+            $table .= "<tr><th>Totaal:</th><th>$total</th></table>";
         }
     }
+
     return $table;
 }
 
-print (createTable($cart, $stockItemPrice));
-//gegevens per artikelen in $cart (naam, prijs, etc.) uit database halen
-//totaal prijs berekenen
-//mooi weergeven in html
 ?>
-<p><a href='view.php?id=<?php print ($stockItemID)?>'>Naar artikelpagina van artikel <?php print ($stockItemID)?></a></p>
+<a href='view.php?id=<?php print ($_GET["stockItemID"]) ?>'>
+    Naar artikelpagina van artikel <?php print ($_GET["stockItemID"]) ?>
+</a>
 </body>
 </html>
