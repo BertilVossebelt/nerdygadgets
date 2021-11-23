@@ -40,9 +40,12 @@ function createTable($cart)
     return $table;
 }
 
+if(isset($_GET["stockItemID"])){
+    $stockItemID = $_GET["stockItemID"];
+    echo "<a href='view.php?id=$stockItemID'> Naar artikelpagina van artikel $stockItemID </a>";
+}
+
 ?>
-<a href='view.php?id=<?php print ($_GET["stockItemID"]) ?>'>
-    Naar artikelpagina van artikel <?php print ($_GET["stockItemID"]) ?>
 </a>
 </body>
 </html>
