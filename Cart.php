@@ -46,6 +46,5 @@ if(isset($_GET["stockItemID"])){
 }
 
 ?>
-</a>
 </body>
 </html>
