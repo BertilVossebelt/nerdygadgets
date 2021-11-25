@@ -41,9 +41,12 @@ $databaseConnection = connectToDatabase();
                     <?php
                 }
                 ?>
+
                 <li>
                     <a href="categories.php" class="HrefDecoration">Alle categorieën</a>
+
                 </li>
+            <a href="Cart.php" class="HrefDecoration">Winkelwagen</a>
             </ul>
         </div>
 <!-- code voor US3: zoeken -->
@@ -59,5 +62,3 @@ $databaseConnection = connectToDatabase();
     <div class="row" id="Content">
         <div class="col-12">
             <div id="SubContent">
-
-

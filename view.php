@@ -92,7 +92,7 @@ $StockItemPrice = $StockItem["SellPrice"];
         <div>
             <form method="get" action="redirect.php">
                     <input type="number" name="stockItemID" value="<?php print($StockItemID) ?>" hidden>
-                <input type="number" name="SellPrice" value="<?php print($StockItem["SellPrice"])?>" hidden>
+                <input type="number" name="SellPrice" value="<?php print($StockItemPrice)?>" hidden>
                     <input type="submit" name="submit" value="Voeg toe aan winkelmandje">
             </form>
         </div>
