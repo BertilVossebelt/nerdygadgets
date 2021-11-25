@@ -1,6 +1,5 @@
 <!-- de inhoud van dit bestand wordt bovenaan elke pagina geplaatst -->
 <?php
-session_start();
 include "database.php";
 $databaseConnection = connectToDatabase();
 ?>
@@ -44,9 +43,8 @@ $databaseConnection = connectToDatabase();
 
                 <li>
                     <a href="categories.php" class="HrefDecoration">Alle categorieën</a>
-
                 </li>
-            <a href="Cart.php" class="HrefDecoration">Winkelwagen</a>
+                    <a href="Cart.php" class="HrefDecoration">Winkelwagen</a>
             </ul>
         </div>
 <!-- code voor US3: zoeken -->

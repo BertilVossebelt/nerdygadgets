@@ -19,8 +19,8 @@ function addProductToCart($stockItemID, $sellPrice){
     if(array_key_exists($stockItemID, $cart)) {  //controleren of $stockItemID(=key!) al in array staat
         $cart[$stockItemID]['amount'] += 1;                   //zo ja:  aantal met 1 verhogen
     }else{
-        $cart[$stockItemID]['amount'] = 1;//zo nee: key toevoegen en aantal op 1 zetten.
-        $cart[$stockItemID]['price'] = $sellPrice;
+        $cart[$stockItemID]['amount'] = 1;                    //zo nee: key toevoegen en aantal op 1 zetten.
+        $cart[$stockItemID]['price'] = $sellPrice;                    //zo nee: key toevoegen en aantal op 1 zetten.
     }
 
     saveCart($cart);                            // werk de "gedeelde" $_SESSION["cart"] bij met de bijgewerkte cart
