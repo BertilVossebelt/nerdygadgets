@@ -1,6 +1,8 @@
 <!-- de inhoud van dit bestand wordt bovenaan elke pagina geplaatst -->
 <?php
 include "database.php";
+include "env_loader.php";
+
 $databaseConnection = connectToDatabase();
 ?>
 <!DOCTYPE html>
