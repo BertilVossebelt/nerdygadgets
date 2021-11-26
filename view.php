@@ -6,6 +6,7 @@ $StockItem = getStockItem($_GET['id'], $databaseConnection);
 $StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
 $StockItemID = $StockItem["StockItemID"];
 $StockItemPrice = $StockItem["SellPrice"];
+$StockItemName = $StockItem["StockItemName"];
 ?>
 
 <div id="CenteredContent">
@@ -94,6 +95,7 @@ $StockItemPrice = $StockItem["SellPrice"];
             <form method="get" action="redirect.php">
                 <input type="number" name="stockItemID" value="<?php print($StockItemID) ?>" hidden>
                 <input type="number" name="SellPrice" value="<?php print($StockItemPrice) ?>" hidden>
+                <input type="text" name="StockItemName" value="<?php print($StockItemName) ?>" hidden>
                 <input type="submit" name="submit" value="Voeg toe aan winkelmandje">
             </form>
         </div>

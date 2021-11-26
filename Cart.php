@@ -1,6 +1,7 @@
 <?php
 include "CartFuncties.php";
 include __DIR__ . "/header.php";
+//include "database.php";
 ?>
 <!DOCTYPE html>
 <html lang="nl">
@@ -17,18 +18,21 @@ echo createTable($cart);
 
 function createTable($cart)
 {
-    $table = "<table border='2'><tr><th>product</th><th>aantal</th><th>prijs</th><tr>";
+    $table = "<table border='2'><tr><th>Product</th><th>Productnaam</th><th>Aantal</th><th>Prijs</th><tr>";
     $total = 0;
     $totalamount = 0;
 
     foreach ($cart as $id => $item) {
         $amount = $item['amount'];
+        $StockItemName = $item['StockItemName'];
         $price = round($item['price'] * $amount, 2);
         $total += $price;
         $totalamount += $amount;
+//        var_dump($item);;
 
         $table .= "<tr>
                         <th><a href='http://localhost/nerdygadgets/view.php?id=$id'>$id</a></th>
+                        <th>$StockItemName</th>
                         <th>$amount</th>
                         <th>$price</th>
                    </tr>";
