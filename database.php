@@ -6,7 +6,7 @@ function connectToDatabase() {
 
     mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT); // Set MySQLi to throw exceptions
     try {
-        $Connection = mysqli_connect(env('DB_HOST'), "root", "root", "nerdygadgets");
+        $Connection = mysqli_connect(env('DB_HOST'), env("DB_USERNAME"), env("DB_PASSWORD"), env("DB_NAME"));
         mysqli_set_charset($Connection, 'latin1');
         $DatabaseAvailable = true;
     } catch (mysqli_sql_exception $e) {
