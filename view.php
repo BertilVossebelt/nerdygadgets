@@ -4,6 +4,7 @@ include __DIR__ . "/header.php";
 
 $StockItem = getStockItem($_GET['id'], $databaseConnection);
 $StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
+$StockItemPath = $StockItemImage[0]["ImagePath"];
 $StockItemID = $StockItem["StockItemID"];
 $StockItemPrice = $StockItem["SellPrice"];
 $StockItemName = $StockItem["StockItemName"];
@@ -96,6 +97,7 @@ $StockItemName = $StockItem["StockItemName"];
                 <input type="number" name="stockItemID" value="<?php print($StockItemID) ?>" hidden>
                 <input type="number" name="SellPrice" value="<?php print($StockItemPrice) ?>" hidden>
                 <input type="text" name="StockItemName" value="<?php print($StockItemName) ?>" hidden>
+                <input type="text" name="StockItemPath" value="<?php print($StockItemPath) ?>" hidden>
                 <input type="submit" name="submit" value="Voeg toe aan winkelmandje">
             </form>
         </div>
