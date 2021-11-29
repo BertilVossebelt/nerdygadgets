@@ -29,9 +29,10 @@ function createTable($cart, $databaseConnection)
         $price = round($item['price'] * $amount, 2);
         $total += $price;
         $totalamount += $amount;
+        $ItemName = htmlspecialchars($StockItemName, ENT_QUOTES);
 
         $table .= "<tr>
-                        <th><a href='http://localhost/nerdygadgets/view.php?id=$id'>$StockItemName</a></th>
+                        <th><a href='http://localhost/nerdygadgets/view.php?id=$id'>$ItemName</a></th>
                         <th><img src='Public/StockItemIMG/$StockItemPath' width='100' alt='Product afbeelding'></th>
                         <th>$amount</th>  
                         <th>$price</th>
