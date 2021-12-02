@@ -34,7 +34,9 @@ function createTable($cart)
                    </tr>";
         if (end($cart) === $item) {
             $total = round($total, 2);
-            $table .= "<tr><th>Totaal:</th><th>$totalamount</th><th>$total</th></table>";
+            $table .= "<tr><th>Totaal:</th><th>$totalamount</th><th>$total</th></table>
+                       <form method='get' action='redirectPaymentChoice.php'>
+                        <input style='height: 48px; width: 240px' type='submit' name='submit' value='Bestellen'> </form>";
         }
     }
 
@@ -43,7 +45,7 @@ function createTable($cart)
 
 if(isset($_GET["stockItemID"])){
     $stockItemID = $_GET["stockItemID"];
-    echo "<a href='view.php?id=$stockItemID'> Naar artikelpagina van artikel $stockItemID </a>";
+    echo "<a href='view.php?id=$stockItemID'> Naar artikelpagina van artikel $stockItemID <br></a>";
 }
 
 ?>
