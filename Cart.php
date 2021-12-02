@@ -23,6 +23,7 @@ function createTable($cart, $databaseConnection)
     $totalamount = 0;
 
     foreach ($cart as $id => $item) {
+
         if(isset($_GET[$id])){
             $amount = $_GET["amount"];
             $cart[$id] = $amount;
