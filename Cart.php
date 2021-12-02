@@ -43,15 +43,16 @@ function createTable($cart, $databaseConnection)
             $table .= "<tr>
                     <th><a href='http://localhost/nerdygadgets/view.php?id=$id'>$StockItemName</a></th>
                     <th><img src='Public/StockItemIMG/$StockItemPath' width='100' alt='Product afbeelding'></th>
-                    <th><form type='GET'> <input type='number' name='amount' value='$amount' size='1' style='height:40px; width:60px'>
-                    <input type='hidden'  name='$id'  value='toevoegen'>
+                    <th><form method='GET'><input type='number' name='amount' value='$amount'
+                    size='1' style='height:40px; width:60px'>
+                    <input type='hidden' name='$id' value='toevoegen'>
                     </form></th>
                     <th>$roundedPrice</th>
                </tr>";
         }
     }
     $total = round($total, 2);
-    $table .= "<tr><th>Totaal:</th><th>$totalamount</th><th>$total</th></table>";
+    $table .= "<tr><th>Totaal:</th><th></th><th>$totalamount</th><th>$total</th></table>";
     return $table;
 }
 
