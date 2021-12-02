@@ -23,15 +23,14 @@ function createTable($cart, $databaseConnection)
     $totalamount = 0;
 
     foreach ($cart as $id => $item) {
-
-        if(isset($_GET[$id])){
-            $amount = $_GET["amount"];
-            $cart[$id] = $amount;
-            adjustCartAmount($amount, $id);
-        } else {
-            $amount = $item['amount'];
-        }
-            
+      if(isset($_GET[$id])){
+          $amount = $_GET["amount"];
+          $cart[$id] = $amount;
+          adjustCartAmount($amount, $id);
+      } else {
+          $amount = $item['amount'];
+      }
+                  
       $StockItemName = $item['StockItemName'];
       $StockItemPath = $item['StockItemPath'];
 
@@ -59,7 +58,7 @@ function createTable($cart, $databaseConnection)
 
 if(isset($_GET["stockItemID"])){
     $stockItemID = $_GET["stockItemID"];
-    echo "<a href='view.php?id=$stockItemID'> Naar artikelpagina van artikel $stockItemID </a>";
+    echo "<a href='view.php?id=$stockItemID'> Naar artikelpagina van artikel $stockItemID <br></a>";
 }
 
 ?>
