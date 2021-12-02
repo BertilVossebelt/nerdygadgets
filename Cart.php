@@ -52,7 +52,10 @@ function createTable($cart, $databaseConnection)
         }
     }
     $total = round($total, 2);
-    $table .= "<tr><th>Totaal:</th><th></th><th>$totalamount</th><th>$total</th></table>";
+    $table .= "<tr><th>Totaal:</th><th></th><th>$totalamount</th><th>$total</th></table>
+               <form method='get' action='redirectPaymentChoice.php'>
+               <input style='height: 48px; width: 240px' type='submit' name='submit' value='Bestellen'> </form>";
+
     return $table;
 }
 
