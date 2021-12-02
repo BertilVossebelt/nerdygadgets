@@ -93,6 +93,18 @@ function getStockItemImage($id, $databaseConnection) {
     mysqli_stmt_execute($Statement);
     $R = mysqli_stmt_get_result($Statement);
     $R = mysqli_fetch_all($R, MYSQLI_ASSOC);
+    if (!isset($R)) {
+        $Query = "
+                SELECT ImagePath
+                FROM stockgroups G
+                JOIN stockitemstockgroups S ON G.StockGroupID = S.StockGroupID
+                WHERE StockItemID = ?";
 
+        $Statement = mysqli_prepare($databaseConnection, $Query);
+        mysqli_stmt_bind_param($Statement, "i", $id);
+        mysqli_stmt_execute($Statement);
+        $R = mysqli_stmt_get_result($Statement);
+        $R = mysqli_fetch_all($R, MYSQLI_ASSOC);
+    }
     return $R;
 }
