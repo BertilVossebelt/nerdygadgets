@@ -23,25 +23,35 @@ function createTable($cart, $databaseConnection)
     $totalamount = 0;
 
     foreach ($cart as $id => $item) {
-        $amount = $item['amount'];
-        $StockItemName = $item['StockItemName'];
-        $StockItemPath = $item['StockItemPath'];
-        $price = round($item['price'] * $amount, 2);
-        $total += $price;
-        $totalamount += $amount;
+        if(isset($_GET[$id])){
+            $amount = $_GET["amount"];
+            $cart[$id] = $amount;
+            adjustCartAmount($amount, $id);
+        } else {
+            $amount = $item['amount'];
+        }
+            
+      $StockItemName = $item['StockItemName'];
+      $StockItemPath = $item['StockItemPath'];
 
-        $table .= "<tr>
-                        <th><a href='http://localhost/nerdygadgets/view.php?id=$id'>$StockItemName</a></th>
-                        <th><img src='Public/StockItemIMG/$StockItemPath' width='100' alt='Product afbeelding'></th>
-                        <th>$amount</th>  
-                        <th>$price</th>
-                   </tr>";
-        if (end($cart) === $item) {
-            $total = round($total, 2);
-            $table .= "<tr><th>Totaal:</th><th><!--afbeelding--></th><th>$totalamount</th><th>$total</th></table>";
+      if($amount != 0) {
+            $price = ($item['price'] * $amount);
+            $roundedPrice = round($item['price'] * $amount, 2);
+            $total += $price;
+            $totalamount += $amount;
+        
+            $table .= "<tr>
+                    <th><a href='http://localhost/nerdygadgets/view.php?id=$id'>$StockItemName</a></th>
+                    <th><img src='Public/StockItemIMG/$StockItemPath' width='100' alt='Product afbeelding'></th>
+                    <th><form type='GET'> <input type='number' name='amount' value='$amount' size='1' style='height:40px; width:60px'>
+                    <input type='hidden'  name='$id'  value='toevoegen'>
+                    </form></th>
+                    <th>$roundedPrice</th>
+               </tr>";
         }
     }
-
+    $total = round($total, 2);
+    $table .= "<tr><th>Totaal:</th><th>$totalamount</th><th>$total</th></table>";
     return $table;
 }
 
