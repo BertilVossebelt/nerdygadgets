@@ -25,3 +25,9 @@ function addProductToCart($stockItemID, $sellPrice){
 
     saveCart($cart);                            // werk de "gedeelde" $_SESSION["cart"] bij met de bijgewerkte cart
 }
+
+function adjustCartAmount($amount, $stockItemID){
+    $cart = getCart();
+    $cart[$stockItemID]['amount'] = $amount;
+    saveCart($cart);
+}
