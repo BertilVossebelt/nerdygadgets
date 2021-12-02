@@ -3,16 +3,20 @@
 include __DIR__ . "/header.php";
 
 $StockItem = getStockItem($_GET['id'], $databaseConnection);
+
+// General stock item data
+$StockItemID = $StockItem["StockItemID"];
+$StockItemPrice = $StockItem["SellPrice"];
+$StockItemName = $StockItem["StockItemName"];
+$ItemName = htmlspecialchars($StockItemName, ENT_QUOTES);
+
+// Stock item images
 $StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
 if (isset($StockItemImage[0]["ImagePath"])) {
     $StockItemPath = $StockItemImage[0]["ImagePath"];
 } else {
     $BackupImagePath = $StockItem['BackupImagePath'];
-} 
-$StockItemID = $StockItem["StockItemID"];
-$StockItemPrice = $StockItem["SellPrice"];
-$StockItemName = $StockItem["StockItemName"];
-$ItemName = htmlspecialchars($StockItemName, ENT_QUOTES);
+}
 
 ?>
 
