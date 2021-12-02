@@ -1,6 +1,7 @@
 <?php
 include "CartFuncties.php";
 include __DIR__ . "/header.php";
+//include "database.php";
 ?>
 <!DOCTYPE html>
 <html lang="nl">
@@ -13,13 +14,11 @@ include __DIR__ . "/header.php";
 
 <?php
 $cart = getCart();
-echo createTable($cart);
+echo createTable($cart, $databaseConnection);
 
-
-
-function createTable($cart)
+function createTable($cart, $databaseConnection)
 {
-    $table = "<table border='2'><tr><th>product</th><th>aantal</th><th>€ prijs</th><tr>";
+    $table = "<table border='2'><tr> <th>Productnaam</th><th>Afbeelding</th><th>Aantal</th><th>Prijs</th><tr>";
     $total = 0;
     $totalamount = 0;
 
@@ -31,18 +30,24 @@ function createTable($cart)
         } else {
             $amount = $item['amount'];
         }
-        if($amount != 0) {
+            
+      $StockItemName = $item['StockItemName'];
+      $StockItemPath = $item['StockItemPath'];
+
+      if($amount != 0) {
             $price = ($item['price'] * $amount);
             $roundedPrice = round($item['price'] * $amount, 2);
             $total += $price;
             $totalamount += $amount;
+        
             $table .= "<tr>
-                        <th><a href='http://localhost/nerdygadgets/view.php?id=$id'>$id</a></th>
-                        <th><form type='GET'> <input type='number' name='amount' value='$amount' size='1' style='height:40px; width:60px'>
-                        <input type='hidden'  name='$id'  value='toevoegen'>
-                         </form></th>
-                        <th>$roundedPrice</th>
-                   </tr>";
+                    <th><a href='http://localhost/nerdygadgets/view.php?id=$id'>$StockItemName</a></th>
+                    <th><img src='Public/StockItemIMG/$StockItemPath' width='100' alt='Product afbeelding'></th>
+                    <th><form type='GET'> <input type='number' name='amount' value='$amount' size='1' style='height:40px; width:60px'>
+                    <input type='hidden'  name='$id'  value='toevoegen'>
+                    </form></th>
+                    <th>$roundedPrice</th>
+               </tr>";
         }
     }
     $total = round($total, 2);
