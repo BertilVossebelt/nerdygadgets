@@ -16,7 +16,7 @@ include __DIR__ . "/header.php";
     <?php
 
     require_once("database.php");
-    session_start();
+
 
     if(isset($_GET['Inloggen'])) {
         $email = $_GET['eMail'];
