@@ -1,6 +1,7 @@
 <?php
 include __DIR__ . "/header.php";
-$email = $_GET['email'];
+// $eMail = $_GET['email'];
+
 ?>
 
 <div>
@@ -14,8 +15,8 @@ $email = $_GET['email'];
     </form>
 
     <?php
-
-    $sql = "SELECT klantnummer FROM accounts WHERE email ='$email'";
+/*
+    $sql = "SELECT klantnummer FROM accounts WHERE email ='$eMail'";
     $date = date("D-M-Y");
 
     $Statement = mysqli_prepare($databaseConnection, $sql);
@@ -34,7 +35,7 @@ $email = $_GET['email'];
         $Statement = mysqli_prepare($databaseConnection, $sql);
         mysqli_stmt_execute($Statement);
     }
-
+*/
     ?>
 
 

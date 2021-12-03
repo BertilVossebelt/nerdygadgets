@@ -4,10 +4,9 @@ include __DIR__ . "/header.php";
     require_once("database.php");
     session_start();
 ?>
-
 <h1 style='margin-left:600px'>Account aanmaken</h1>
 <div>
-    <form style='margin-left:600px' method="get" action="RedirectiDeal.php">
+    <form style='margin-left:600px' method="get">
         <label style='margin-bottom:0px' for="Aanhef">Aanhef</label> <br>
         <input style='margin-bottom:0px; height:13px; width:13px' type="radio" name="Aanhef" required> Dhr.
         <input style='margin-bottom:0px; height:13px; width:13px; margin-left:5px' type="radio" name="Aanhef" required> Mevr. <br>
@@ -28,10 +27,8 @@ include __DIR__ . "/header.php";
         <label style='margin-bottom:0px' for="Wachtwoord">Wachtwoord:</label> <br>
         <input style='height:40px; width: 300px; margin-bottom:10px' type="password" name="Wachtwoord" required> <br>
 
+            <input style='height:40px; width:100px; margin-bottom:10px' type="submit" name="registreer" value="Registreer">
 
-
-
-        <input style='height:40px; width:100px; margin-bottom:10px' type="submit" name="registreer" value="Registreer">
 
         <?php
         if (isset($_GET['registreer'])) {
@@ -69,11 +66,12 @@ include __DIR__ . "/header.php";
 
                 $Statement = mysqli_prepare($databaseConnection, $sql);
                 mysqli_stmt_execute($Statement);
+            } catch (Exception $e) {
+                echo 'Message: ' . $e->getMessage();
             }
-
-            catch(Exception $e) {
-                echo 'Message: ' .$e->getMessage();
-            }
+            echo "<script>
+        window.location = 'RedirectiDeal.php';
+    </script>";
         }
 
 
@@ -96,10 +94,6 @@ include __DIR__ . "/header.php";
         ?>
 
     </form>
-
-
-
-
 </div>
 
 
