@@ -264,7 +264,12 @@ ul#ul-class-price li {
 .HrefDecoration {
     color: #ffffff;
 }
-
+.HrefDecoration i.account {
+    color: #676EFF;
+}
+.HrefDecoration i.cart {
+    color: #676EFF;
+}
 .HrefDecoration i.search {
     color: #676EFF;
 }
