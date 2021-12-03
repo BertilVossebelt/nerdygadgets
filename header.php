@@ -59,7 +59,7 @@ $databaseConnection = connectToDatabase();
                 <a href="Cart.php" class="HrefDecoration"><i class="fa fa-shopping-cart cart" aria-hidden="true"></i> Winkelwagen <?php if(count($cart) != 0) print("[".count($cart)."]")?></a>
             </li>
             <li>
-                <a href="account.php" class="HrefDecoration"><i class="fa fa-user-o account" aria-hidden="true"></i> Account</a>
+                <a href="account.php" class="HrefDecoration"><i class="fa fa-user account" aria-hidden="true"></i> Account</a>
             </li>
             <li>
                 <a href="browse.php" class="HrefDecoration"><i class="fas fa-search search"></i> Zoeken</a>
