@@ -5,7 +5,7 @@ function getCart(){
     if(isset($_SESSION['cart'])){               //controleren of winkelmandje (=cart) al bestaat
         $cart = $_SESSION['cart'];                  //zo ja:  ophalen
     } else{
-        $cart = [];                            //zo nee: dan een nieuwe (nog lege) array
+        $cart = [];                           //zo nee: dan een nieuwe (nog lege) array
     }
     return $cart;                               // resulterend winkelmandje terug naar aanroeper functie
 }

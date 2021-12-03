@@ -1,8 +1,7 @@
 <?php
 include __DIR__ . "/header.php";
-
-    require_once("database.php");
-    session_start();
+require_once("database.php");
+session_start();
 ?>
 <h1 style='margin-left:600px'>Account aanmaken</h1>
 <div>
@@ -26,8 +25,7 @@ include __DIR__ . "/header.php";
         <input style='height:40px; width: 300px; margin-bottom:10px' type="text" name="eMail" required> <br>
         <label style='margin-bottom:0px' for="Wachtwoord">Wachtwoord:</label> <br>
         <input style='height:40px; width: 300px; margin-bottom:10px' type="password" name="Wachtwoord" required> <br>
-
-            <input style='height:40px; width:100px; margin-bottom:10px' type="submit" name="registreer" value="Registreer">
+        <input style='height:40px; width:100px; margin-bottom:10px' type="submit" name="registreer" value="Registreer">
 
 
         <?php
@@ -60,18 +58,15 @@ include __DIR__ . "/header.php";
             $wachtwoord = md5($wachtwoord);
 
             try {
-                $sql = "INSERT INTO accounts VALUES(
-                            '$aanhef', '$voornaam', '$tussenvoegsel', '$achternaam', '$postcode', '$huisnummer', '$toevoeging', '$woonplaats', '$email', '$wachtwoord')";
-
+                $sql = "INSERT INTO accounts (voornaam, tussenvoegsel, achternaam, postcode, huisnummer, toevoeging, woonplaats, email, wachtwoord) 
+                VALUES('$voornaam', '$tussenvoegsel', '$achternaam', '$postcode', '$huisnummer', '$toevoeging', '$woonplaats', '$email', '$wachtwoord')";
 
                 $Statement = mysqli_prepare($databaseConnection, $sql);
                 mysqli_stmt_execute($Statement);
             } catch (Exception $e) {
                 echo 'Message: ' . $e->getMessage();
             }
-            echo "<script>
-        window.location = 'RedirectiDeal.php';
-    </script>";
+            echo "<script>window.location = 'RedirectiDeal.php';</script>";
         }
 
 
@@ -95,5 +90,3 @@ include __DIR__ . "/header.php";
 
     </form>
 </div>
-
-
