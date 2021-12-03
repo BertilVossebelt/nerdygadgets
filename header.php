@@ -1,7 +1,10 @@
 <!-- de inhoud van dit bestand wordt bovenaan elke pagina geplaatst -->
 <?php
 include "database.php";
+include "CartFuncties.php";
 include "env_loader.php";
+$cart = getCart();
+
 
 $databaseConnection = connectToDatabase();
 ?>
@@ -46,7 +49,7 @@ $databaseConnection = connectToDatabase();
                 <li>
                     <a href="categories.php" class="HrefDecoration">Alle categorieën</a>
                 </li>
-                    <a href="Cart.php" class="HrefDecoration">Winkelwagen</a>
+                    <a href="Cart.php" class="HrefDecoration">Winkelwagen <?php if(count($cart) != 0) print("[".count($cart)."]")?></a>
             </ul>
         </div>
 <!-- code voor US3: zoeken -->

@@ -1,5 +1,4 @@
 <?php
-include "CartFuncties.php";
 include __DIR__ . "/header.php";
 //include "database.php";
 ?>
@@ -30,7 +29,6 @@ function createTable($cart, $databaseConnection)
         }
         $StockItemName = $item['StockItemName'];
         $StockItemPath = $item['StockItemPath'];
-
         if($amount != 0) {
             $price = ($item['price'] * $amount);
             $roundedPrice = round($item['price'] * $amount, 2);
@@ -52,7 +50,7 @@ function createTable($cart, $databaseConnection)
     }
     $total = round($total, 2);
     if($totalamount == 0) {
-        print("<br><H1> Je winkelmand is leeg. <a href='http://localhost/nerdygadgets'><u>Shop nu!</u></a> </H1>");
+        print("<br><H1><center>Je winkelmand is leeg. <a href='http://localhost/nerdygadgets'><u>Shop nu!</u></a></center></H1>");
     }
     if(!$totalamount == 0) {
         $table .= "<tr><th>Totaal:</th><th></th><th>$totalamount</th><th>$total</th></table>
