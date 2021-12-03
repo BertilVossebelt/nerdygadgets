@@ -51,11 +51,13 @@ $databaseConnection = connectToDatabase();
                 <li>
                     <a href="categories.php" class="HrefDecoration">Alle categorieën</a>
                 </li>
-                    <a href="Cart.php" class="HrefDecoration">Winkelwagen <?php if(count($cart) != 0) print("[".count($cart)."]")?></a>
             </ul>
         </div>
 <!-- code voor US3: zoeken -->
         <ul id="ul-class-navigation">
+            <li>
+                <a href="Cart.php" class="HrefDecoration"><i class="fa fa-shopping-cart cart" aria-hidden="true"></i> Winkelwagen <?php if(count($cart) != 0) print("[".count($cart)."]")?></a>
+            </li>
             <li>
                 <a href="account.php" class="HrefDecoration"><i class="fa fa-user-o account" aria-hidden="true"></i> Account</a>
             </li>
