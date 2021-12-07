@@ -50,9 +50,15 @@ function createTable($cart, $databaseConnection)
     }
     $total = round($total, 2);
     if($totalamount == 0) {
-        print("<br><H1><center>Je winkelmand is leeg. <a href='http://localhost/nerdygadgets'><u>Shop nu!</u></a></center></H1>");
-    }
-    if(!$totalamount == 0) {
+        print("<br><H1><center>Je winkelmand is leeg. <a href='http://localhost/nerdygadgets/categories.php'><u>Shop nu!</u></a></center></H1>");
+    } else
+    if(isset($_SESSION['email'])){
+        if(!$totalamount == 0) {
+            $table .= "<tr><th>Totaal:</th><th></th><th>$totalamount</th><th>$total</th></table>
+    <form method='get' action='RedirectiDeal.php?email='>
+        <input style='height: 48px; width: 240px' type='submit' name='submit' value='Bestellen'> </form>";
+        }
+    } else{
         $table .= "<tr><th>Totaal:</th><th></th><th>$totalamount</th><th>$total</th></table>
     <form method='get' action='redirectPaymentChoice.php'>
         <input style='height: 48px; width: 240px' type='submit' name='submit' value='Bestellen'> </form>";
