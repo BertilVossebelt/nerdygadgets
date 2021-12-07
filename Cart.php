@@ -53,7 +53,7 @@ function createTable($cart, $databaseConnection)
         print("<br><H1><center>Je winkelmand is leeg. <a href='http://localhost/nerdygadgets'><u>Shop nu!</u></a></center></H1>");
     }
     if(!$totalamount == 0) {
-        $table .= "<tr><th>Totaal:</th><th></th><th>$totalamount</th><th>$total</th></table>
+        $table .= "<tr><th>Totaal:</th><th><!--afbeelding--></th><th>$totalamount</th><th>$total</th></table>
     <form method='get' action='redirectPaymentChoice.php'>
         <input style='height: 48px; width: 240px' type='submit' name='submit' value='Bestellen'> </form>";
     }
