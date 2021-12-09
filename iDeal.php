@@ -1,6 +1,7 @@
 <?php
 include __DIR__ . "/header.php";
-$email = $_GET['email'];
+$eMail = $_SESSION['email'];
+$klantnummer = $_SESSION['klantnummer'];
 ?>
 
 <div>
@@ -9,30 +10,37 @@ $email = $_GET['email'];
         <select style='margin-left:300px; margin-bottom:25px; width:215px' name="keuze" id="keuze">
             <option value="ideal">iDeal</option>
         </select> <br>
-        <input type="text" name="email" value="<?php echo $email?>" hidden>
+        <input type="text" name="email" value="<?php echo $eMail?>" hidden>
         <input style='width:215px;margin-left:300px' type="submit" name="Betalen" value="Betalen">
     </form>
 
     <?php
 
-    $sql = "SELECT klantnummer FROM accounts WHERE email ='$email'";
-    $date = date("D-M-Y");
+    //$sql = "SELECT klantnummer FROM accounts WHERE email ='$eMail'";
 
+/*
     $Statement = mysqli_prepare($databaseConnection, $sql);
     mysqli_stmt_execute($Statement);
     $ReturnableResult = mysqli_stmt_get_result($Statement);
-    $ReturnableResult = mysqli_fetch_all($ReturnableResult, MYSQLI_ASSOC);
 
-    $customerid = $ReturnableResult;
+    if (mysqli_num_rows($ReturnableResult) == 1) {
+        $record = mysqli_fetch_assoc($ReturnableResult);
+    }
+*/
 
 
     if(isset($_GET['Betalen'])){
+        $date = date("Y-m-d");
         $sql = "INSERT INTO orders VALUES(
-            '$customerid', '0', '0', '0', '0', '$date', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'
-)";
+                '', '$klantnummer','$date')";
 
         $Statement = mysqli_prepare($databaseConnection, $sql);
         mysqli_stmt_execute($Statement);
+
+        /*
+        $sql = "INSERT INTO orderlines VALUES(
+                '', '', '')";
+*/
     }
 
     ?>

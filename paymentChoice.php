@@ -1,6 +1,15 @@
 <?php
 include __DIR__ . "/header.php";
-
+if(isset($_SESSION['email'])){
+    echo"U bent al ingelogd.";
+    echo "<form method='get'>
+            <input style='width:215px; margin-left:300px; margin-bottom:0px'  type='submit' name='uitloggen' value='Log Uit'>
+";
+    if(isset($_GET['uitloggen'])){
+        session_destroy();
+        header("Location: paymentChoice.php");
+    }
+} else{
 ?>
 
 <h1 style="display:inline; margin-left:300px">Inloggen</h1> <h1 style="display:inline; margin-left:580px">Registreren</h1> <br>
@@ -13,10 +22,12 @@ include __DIR__ . "/header.php";
     <input style='width:215px; margin-left:300px; margin-bottom:0px'  type="submit" name="Inloggen" value="Log in">
     </form> <form method="get" action="redirectPayment.php"><input style='width:215px;margin-left:1047px' type="submit" name="Registreren" value="Registreren"></form> <br>
 
+    <a style='margin-left:700px' href='iDealZA.php'> Bestellen zonder account <br></a>
+
     <?php
 
     require_once("database.php");
-    session_start();
+    // session_start();
 
     if(isset($_GET['Inloggen'])) {
         $email = $_GET['eMail'];
@@ -35,17 +46,25 @@ include __DIR__ . "/header.php";
 
             if ($wachtwoord === $record['wachtwoord']) {
                 $_SESSION['email'] = $record['email'];
-
-                $success = true;
-
-                header("Location: ./RedirectiDeal.php?email=$email");
+                $_SESSION['klantnummer'] = $record['klantnummer'];
+                $_SESSION['voornaam'] = $record['voornaam'];
+                $_SESSION['tussenvoegsel'] = $record['tussenvoegsel'];
+                $_SESSION['achternaam'] = $record['achternaam'];
+                $_SESSION['postcode'] = $record['postcode'];
+                $_SESSION['huisnummer'] = $record['huisnummer'];
+                $_SESSION['toevoeging'] = $record['toevoeging'];
+                $_SESSION['woonplaats'] = $record['woonplaats'];
+                echo "<script>
+        window.location = 'categories.php';
+    </script>";
+        }
             } else{
                 echo "Het wachtwoord of email is onjuist.";
             }
-        }
 
 //        $ReturnableResult = mysqli_fetch_all($ReturnableResult, MYSQLI_ASSOC);
 
+    }
     }
     ?>
 
