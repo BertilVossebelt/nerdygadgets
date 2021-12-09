@@ -1,6 +1,9 @@
 <?php
 include __DIR__ . "/header.php";
-//include "database.php";
+include "CartFuncties.php";
+include "mollie.php";
+
+if(isset($_GET['pay'])) setupPayment($_GET['value'], 'Test betaling', '1');
 ?>
 <!DOCTYPE html>
 <html lang="nl">
@@ -52,6 +55,13 @@ function createTable($cart, $databaseConnection)
     }
 
     $total = round($total, 2);
+
+    $table .= "<tr><th>Totaal:</th><th></th><th>$totalamount</th><th>$total</th></table>
+               <form method='GET' action='Cart.php'>
+               <input type='text' name='value' value='$total' hidden>
+               <button type='submit' name='pay' value='pay'>Betalen</button>
+               </form>";
+
     if($totalamount == 0) {
         print("<br><H1><center>Je winkelmand is leeg. <a href='http://localhost/nerdygadgets'><u>Shop nu!</u></a></center></H1>");
     }
@@ -64,6 +74,7 @@ function createTable($cart, $databaseConnection)
     <form method='get' action='RedirectiDeal.php'>
         <input style='height: 48px; width: 240px' type='submit' name='submit' value='Bestellen'> </form>";
     }
+
     return $table;
 }
 if(isset($_GET["stockItemID"])){
