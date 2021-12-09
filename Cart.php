@@ -1,7 +1,9 @@
 <?php
-include "CartFuncties.php";
 include __DIR__ . "/header.php";
-//include "database.php";
+include "CartFuncties.php";
+include "mollie.php";
+
+if(isset($_GET['pay'])) setupPayment($_GET['value'], 'Test betaling', '1');
 ?>
 <!DOCTYPE html>
 <html lang="nl">
@@ -51,8 +53,14 @@ function createTable($cart, $databaseConnection)
                </tr>";
         }
     }
+
     $total = round($total, 2);
-    $table .= "<tr><th>Totaal:</th><th></th><th>$totalamount</th><th>$total</th></table>";
+    $table .= "<tr><th>Totaal:</th><th></th><th>$totalamount</th><th>$total</th></table>
+               <form method='GET' action='Cart.php'>
+               <input type='text' name='value' value='$total' hidden>
+               <button type='submit' name='pay' value='pay'>Betalen</button>
+               </form>";
+
     return $table;
 }
 

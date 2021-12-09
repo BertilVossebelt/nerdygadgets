@@ -1,21 +1,22 @@
 <?php
 require_once 'vendor/autoload.php';
+include 'env_loader.php';
 
 function setup () {
     $mollie = new \Mollie\Api\MollieApiClient();
-    $mollie->setApiKey("test_8EPsAA9euBMeTkEnU3Nsxa9sVH4zss");
+    $mollie->setApiKey(env('MOLLIE_TEST_KEY'));
     return $mollie;
 }
 
-function setupPayment($value, $description, $orderID) {
+function setupPayment($value, $description) {
+    echo $value;
     $payment = setup()->payments->create([
         "amount" => [
             "currency" => "EUR",
             "value" => $value,
         ],
         "description" => $description,
-        "redirectUrl" => 'https://caa1-145-44-52-136.ngrok.io' . "/" . 'nerdygadgets' . "/" . $orderID,
-        "webhookUrl"  => 'https://caa1-145-44-52-136.ngrok.io' . "/mollie-webhook/",
+        "redirectUrl" => env('APP_DOMAIN') . "/" . env('APP_FOLDER') . "/PaymentSuccess.php",
     ]);
 
     header("Location: " . $payment->getCheckoutUrl(), true, 303);

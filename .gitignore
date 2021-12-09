@@ -5,4 +5,4 @@ env.php
 
 # Composer
 composer.phar
-/vendor/git adgit
+vendor
