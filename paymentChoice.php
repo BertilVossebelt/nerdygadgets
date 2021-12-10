@@ -20,7 +20,12 @@ if(isset($_SESSION['email'])){
     <label style='margin-left:300px; margin-bottom:0px' for="Wachtwoord">Wachtwoord:</label> <p style='display:inline; margin-left:650px'>hieronder te drukken.</p><br>
     <input style='margin-bottom:10px; margin-left:300px; width:300px; height:40px' type="password" name="Wachtwoord" required> <br>
     <input style='width:215px; margin-left:300px; margin-bottom:0px'  type="submit" name="Inloggen" value="Log in">
-    </form> <form method="get" action="redirectPayment.php"><input style='width:215px;margin-left:1047px' type="submit" name="Registreren" value="Registreren"></form> <br>
+    </form> <form method="get" action="redirectPayment.php">
+        <input style='width:215px;margin-left:1047px' type="submit" name="Registreren" value="Registreren">
+    </form> <br>
+
+
+    <a style='margin-left:700px' href='iDealZA.php'> Bestellen zonder account <br></a>
 
     <a style='margin-left:700px' href='iDealZA.php'> Bestellen zonder account <br></a>
 

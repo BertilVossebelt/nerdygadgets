@@ -1,6 +1,7 @@
 <?php
 
-include "CartFuncties.php";
+include __DIR__ . "/header.php";
+
 if (isset($_GET["submit"])) addProductToCart($_GET["stockItemID"], $_GET['SellPrice'], $_GET['StockItemName'], $_GET['StockItemPath']);
 ?>
 

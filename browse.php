@@ -202,8 +202,8 @@ function berekenVerkoopPrijs($adviesPrijs, $btw)
 <!-- code deel 3 van User story: Zoeken producten : de html -->
 <!-- de zoekbalk links op de pagina  -->
 
-<div id="FilterFrame"><h2 class="FilterText"><i class="fas fa-filter"></i> Filteren </h2>
-    <form>
+<div id="FilterFrame"><h2 class="FilterText" style='color: #000000'><i class="fas fa-filter"></i>  Filteren </h2>
+    <form style='color: #000000'>
         <div id="FilterOptions">
             <h4 class="FilterTopMargin"><i class="fas fa-search"></i> Zoeken</h4>
             <input type="text" name="search_string" id="search_string"

@@ -35,8 +35,8 @@ a:hover {
 a span {
     display: none;
     position: absolute;
-    color: #30d5c8;
-    background: #30d5c8;
+    color: #6DAFFE;
+    background: #6DAFFE;
     padding: 5px;
 }
 a:hover span {
@@ -77,11 +77,11 @@ ul#ul-class-navigation li {
 #Header {
     position: fixed;
     top:0;
-    background-color: rgb(255, 255, 255);
+    background-color: #6DAFFE;
     width: 100%;
     height: 200px;
     z-index: 1;
-    border-bottom: 1px solid rgb(48, 213, 200);
+    border-bottom: 5px solid #437FC7;
 }
 #Content {
     margin-top: 200px;
@@ -93,7 +93,7 @@ ul#ul-class-navigation li {
     background-color: #FFFFFF;
     float: left;
     top:216px;
-    border: 1px solid #30d5c8;
+    border: 1px solid #6DAFFE;
     margin-left: 5px;
     margin-top: 10px;
     padding: 20px;
@@ -110,7 +110,7 @@ ul#ul-class-navigation li {
     margin-top: 15px;
     position: relative;
     padding: 1px;
-    border-bottom: 1px solid #30d5c8;
+    border-bottom: 1px solid #6DAFFE;
 }
 .ImgFrame {
     width: 230px;
@@ -268,16 +268,16 @@ ul#ul-class-price li {
     color: #000000;
 }
 .HrefDecoration i.account {
-    color: #30d5c8;
+    color: #EDF6FF;
 }
 .HrefDecoration i.wishlist {
-    color: #30d5c8;
+    color: #EDF6FF;
 }
 .HrefDecoration i.cart {
-    color: #30d5c8;
+    color: #EDF6FF;
 }
 .HrefDecoration i.search {
-    color: #30d5c8;
+    color: #EDF6FF;
 }
 
 .HrefDecoration:hover, .HrefDecoration:active {
@@ -285,7 +285,7 @@ ul#ul-class-price li {
     color: #ccc;
 }
 .TextMain {
-    color: #fff;
+    color: #000000;
     font-family: vortice-concept, sans-serif;
     font-size: 50px;
     text-transform: uppercase;
@@ -294,7 +294,7 @@ ul#ul-class-price li {
     margin-left: 10%;
 }
 .HomePagePrice {
-    color: #30d5c8;
+    color: #6DAFFE;
     font-family: vortice-concept, sans-serif;
     font-size: 50px;
     text-transform: uppercase;
@@ -394,7 +394,7 @@ ul#ul-class-price li {
 }
 .StockItemPriceText {
     font-family: vortice-concept, sans-serif;
-    color: #30d5c8;
+    color: #6DAFFE;
     font-size: 22px;
     text-transform: uppercase;
     font-weight: bold;
@@ -405,7 +405,7 @@ ul#ul-class-price li {
 }
 .StockItemID {
     font-family: vortice-concept, sans-serif;
-    color: #30d5c8;
+    color: #6DAFFE;
     font-size: 10px;
     text-transform: uppercase;
     font-weight: bold;
@@ -420,7 +420,7 @@ ul#ul-class-price li {
 }
 .StockItemComments {
     font-family: pt-sans, sans-serif;
-    color: #fff;
+    color: #000000;
     font-size: 14px;
     font-weight: bold;
 }
@@ -457,8 +457,8 @@ ul#ul-class-price li {
 
 }
 .IndexStyle {
-    margin: 0 auto;
-    width: 1400px;
+    margin: 100px auto;
+    width: 1150px;
 }
 .FilterTopMargin {
     margin-top: 20px;
@@ -478,14 +478,14 @@ ul#ul-class-price li {
     font-size: 18px;
     display: inline;
     font-weight: bold;
-    background-color: rgb(98, 158, 255);
+    background-color: #6DAFFE;
     padding: 15px 22px;
     border-radius: 50px;
 }
 .PageNumber {
     padding: 7px 15px;
     border-radius: 39px;
-    background: rgb(36, 41, 143);
-    border: 1px rgb(98, 158, 255) solid;
+    background: #6DAFFE;
+    border: 1px #6DAFFE solid;
     color: #fff;
 }
