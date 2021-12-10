@@ -6,7 +6,12 @@ include __DIR__ . "/header.php";
 ?>
 <h1 style='margin-left:600px'>Account aanmaken</h1>
 <div>
-    <form style='margin-left:600px' method="get">
+
+
+    <form style='border-radius: 20px; margin-left: 600px;margin-right: 600px; background-color: #6DAFFE' method="get">
+        <label style='margin-bottom:0px' for="Aanhef">Aanhef</label> <br>
+        <input style='margin-bottom:0px; height:13px; width:13px' type="radio" name="Aanhef" required> Dhr.
+        <input style='margin-bottom:0px; height:13px; width:13px; margin-left:5px' type="radio" name="Aanhef" required> Mevr. <br>
         <label style='margin-bottom:0px' for="Voornaam">Voornaam:</label><br>
         <input style='height:40px; width:300px; margin-bottom:10px' type="text" name="Voornaam" required> <br>
         <label style='margin-bottom:0px' for="Tussenvoegsel">Tussenvoegsel (optioneel):</label><br>
