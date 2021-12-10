@@ -27,7 +27,7 @@ if(isset($_SESSION['email'])){
 
     <a style='margin-left:700px' href='iDealZA.php'> Bestellen zonder account <br></a>
 
-    <a style='margin-left:700px' href='iDealZA.php'> Bestellen zonder account <br></a>
+
 
     <?php
 
