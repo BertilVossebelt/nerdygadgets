@@ -3,17 +3,21 @@
 include __DIR__ . "/header.php";
 
 $StockItem = getStockItem($_GET['id'], $databaseConnection);
-$StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
-if (isset($StockItemImage[0]["ImagePath"])) {
-    $StockItemPath = $StockItemImage[0]["ImagePath"];
-} else {
-    $BackupImagePath = $StockItem['BackupImagePath'];
-} 
+
+// General stock item data
 $StockItemID = $StockItem["StockItemID"];
 $StockItemPrice = $StockItem["SellPrice"];
 $StockItemName = $StockItem["StockItemName"];
 $ItemName = htmlspecialchars($StockItemName, ENT_QUOTES);
 
+// Stock item images
+$StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
+
+$StockItemPath = $StockItemImage[0]["ImagePath"] ?? $StockItem['BackupImagePath'];
+$StockItemID = $StockItem["StockItemID"];
+$StockItemPrice = $StockItem["SellPrice"];
+$StockItemName = $StockItem["StockItemName"];
+$ItemName = htmlspecialchars($StockItemName, ENT_QUOTES);
 ?>
 
 <div id="CenteredContent">
@@ -29,17 +33,13 @@ $ItemName = htmlspecialchars($StockItemName, ENT_QUOTES);
         <?php }
         ?>
 
-
         <div id="ArticleHeader">
             <?php
             if (isset($StockItemImage)) {
                 // één plaatje laten zien
-                if (count($StockItemImage) == 1) {
-                    ?>
-                    <div id="ImageFrame"
-                         style="background-image: url('Public/StockItemIMG/<?php print $StockItemImage[0]['ImagePath']; ?>'); background-size: 300px; background-repeat: no-repeat; background-position: center;"></div>
-                    <?php
-                } else if (count($StockItemImage) >= 2) { ?>
+                ?>
+                <?php
+                if (count($StockItemImage) >= 2) { ?>
                     <!-- meerdere plaatjes laten zien -->
                     <div id="ImageFrame">
                         <div id="ImageCarousel" class="carousel slide" data-interval="false">
@@ -73,6 +73,11 @@ $ItemName = htmlspecialchars($StockItemName, ENT_QUOTES);
                         </div>
                     </div>
                     <?php
+                } else {
+                    ?>
+                    <div id="ImageFrame"
+                         style="background-image: url(<?php isset($StockItemImage[0]["ImagePath"]) ? print("'Public/StockItemIMG/$StockItemPath'") : print("'Public/StockGroupIMG/$StockItemPath'"); ?>); background-size: 300px; background-repeat: no-repeat; background-position: center;"></div>
+                    <?php
                 }
             } else {
                 ?>
@@ -103,13 +108,7 @@ $ItemName = htmlspecialchars($StockItemName, ENT_QUOTES);
                 <input type="number" name="stockItemID" value="<?php print($StockItemID) ?>" hidden>
                 <input type="number" name="SellPrice" value="<?php print($StockItemPrice) ?>" hidden>
                 <input type="text" name="StockItemName" value="<?php print($ItemName) ?>" hidden>
-                <?php if(isset($StockItemImage[0]["ImagePath"])) {?>
-                 <input type="text" name="StockItemPath" value="<?php print($StockItemPath) ?>" hidden>
-                <?php } else { ?>
-                <input type="text" name="StockItemPath" value="<?php print($BackupImagePath) ?>" hidden>
-                <?php } ?>
-
-
+                <input type="text" name="StockItemPath" value="<?php print($StockItemPath) ?>" hidden>
                 <input type="submit" name="submit" value="Voeg toe aan winkelmandje">
             </form>
         </div>
@@ -117,46 +116,44 @@ $ItemName = htmlspecialchars($StockItemName, ENT_QUOTES);
             <h3>Artikel beschrijving</h3>
             <p><?php print $StockItem['SearchDetails']; ?></p>
         </div>
-    <div id="StockItemSpecifications">
-        <h3>Artikel specificaties</h3>
-        <?php
-        $CustomFields = json_decode($StockItem['CustomFields'], true);
-        if (is_array($CustomFields)) { ?>
-            <table>
-            <thead>
-            <th>Naam</th>
-            <th>Data</th>
-            </thead>
+        <div id="StockItemSpecifications">
+            <h3>Artikel specificaties</h3>
             <?php
-            foreach ($CustomFields as $SpecName => $SpecText) { ?>
-                <tr>
-                    <td>
-                        <?php print $SpecName; ?>
-                    </td>
-                    <td>
-                        <?php
-                        if (is_array($SpecText)) {
-                            foreach ($SpecText as $SubText) {
-                                print $SubText . " ";
+            $CustomFields = json_decode($StockItem['CustomFields'], true);
+            if (is_array($CustomFields)) { ?>
+                <table>
+                <thead>
+                <th>Naam</th>
+                <th>Data</th>
+                </thead>
+                <?php
+                foreach ($CustomFields as $SpecName => $SpecText) { ?>
+                    <tr>
+                        <td>
+                            <?php print $SpecName; ?>
+                        </td>
+                        <td>
+                            <?php
+                            if (is_array($SpecText)) {
+                                foreach ($SpecText as $SubText) {
+                                    print $SubText . " ";
+                                }
+                            } else {
+                                print $SpecText;
                             }
-                        } else {
-                            print $SpecText;
-                        }
-                        ?>
-                    </td>
-                </tr>
-            <?php } ?>
-            </table><?php
-        } else { ?>
+                            ?>
+                        </td>
+                    </tr>
+                <?php } ?>
+                </table><?php
+            } else { ?>
 
-            <p><?php print $StockItem['CustomFields']; ?>.</p>
-            <?php
-        }
-        ?>
-    </div>
-    <?php
-
-
+                <p><?php print $StockItem['CustomFields']; ?>.</p>
+                <?php
+            }
+            ?>
+        </div>
+        <?php
     } else {
         ?><h2 id="ProductNotFound">Het opgevraagde product is niet gevonden.</h2><?php
     } ?>

@@ -82,7 +82,6 @@ function getStockItem($id, $databaseConnection) {
 }
 
 function getStockItemImage($id, $databaseConnection) {
-
     $Query = "
                 SELECT ImagePath
                 FROM stockitemimages 
@@ -93,6 +92,7 @@ function getStockItemImage($id, $databaseConnection) {
     mysqli_stmt_execute($Statement);
     $R = mysqli_stmt_get_result($Statement);
     $R = mysqli_fetch_all($R, MYSQLI_ASSOC);
+
     if (!isset($R)) {
         $Query = "
                 SELECT ImagePath
@@ -106,5 +106,7 @@ function getStockItemImage($id, $databaseConnection) {
         $R = mysqli_stmt_get_result($Statement);
         $R = mysqli_fetch_all($R, MYSQLI_ASSOC);
     }
+
+
     return $R;
 }

@@ -56,11 +56,23 @@ $databaseConnection = connectToDatabase();
 <!-- code voor US3: zoeken -->
         <ul id="ul-class-navigation">
             <li>
-                <a href="Cart.php" class="HrefDecoration"><i class="fa fa-shopping-cart cart" aria-hidden="true"></i> Winkelwagen <?php if(count($cart) != 0) print("[".count($cart)."]")?></a>
+                <a href="wishlist.php" class="HrefDecoration"><i class="fa fa-heart wishlist" aria-hidden="true"></i></a>
             </li>
             <li>
-                <a href="account.php" class="HrefDecoration"><i class="fa fa-user account" aria-hidden="true"></i> Account</a>
+                <a href="Cart.php" class="HrefDecoration"><i class="fa fa-shopping-cart cart" aria-hidden="true"></i>  <?php if(count($cart) != 0) print("[".count($cart)."]")?></a>
             </li>
+            <li>
+                <a href="Account.php" class="HrefDecoration"><i class="fa fa-user account" aria-hidden="true"></i> Account</a>
+            </li>
+            <?php if(!empty($_SESSION)){
+                echo "<li>
+                <a href='Log-Uit.php' class='HrefDecoration'><i class='fa fa-user account' aria-hidden='true'></i> Log-Uit</a>
+            </li>";
+            }else{
+                echo "<li>
+                <a href='paymentChoice.php' class='HrefDecoration'><i class='fa fa-user account' aria-hidden='true'></i> Log-In</a>
+            </li>" ;
+            } ?>
             <li>
                 <a href="browse.php" class="HrefDecoration"><i class="fas fa-search search"></i> Zoeken</a>
             </li>
