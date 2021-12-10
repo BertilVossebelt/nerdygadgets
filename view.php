@@ -98,7 +98,7 @@ $ItemName = htmlspecialchars($StockItemName, ENT_QUOTES);
                     <div class="CenterPriceLeftChild">
                         <p class="StockItemPriceText"><b><?php print sprintf("€ %.2f", $StockItem["SellPrice"]); ?></b>
                         </p>
-                        <h6> Inclusief BTW </h6>
+                        <h6 style="color: #6DAFFE"> Inclusief BTW </h6>
                     </div>
                 </div>
             </div>
@@ -109,15 +109,28 @@ $ItemName = htmlspecialchars($StockItemName, ENT_QUOTES);
                 <input type="number" name="SellPrice" value="<?php print($StockItemPrice) ?>" hidden>
                 <input type="text" name="StockItemName" value="<?php print($ItemName) ?>" hidden>
                 <input type="text" name="StockItemPath" value="<?php print($StockItemPath) ?>" hidden>
-                <input type="submit" name="submit" value="Voeg toe aan winkelmandje">
+
+
+                <?php if(isset($StockItemImage[0]["ImagePath"])) {?>
+                 <input type="text" name="StockItemPath" value="<?php print($StockItemPath) ?>" hidden>
+                <?php } else { ?>
+                <input type="text" name="StockItemPath" value="<?php print($BackupImagePath) ?>" hidden>
+                <?php } ?>
+
+
+                <input type="submit" name="submit" value="Voeg toe aan winkelmandje" style="border-width: 0px; box-shadow 10px 10px 8px; border-radius: 10px">
             </form>
         </div>
-        <div id="StockItemDescription">
+        <div id="StockItemDescription" style="background-color: #6DAFFE; border-radius: 10px; border-width: 0px">
             <h3>Artikel beschrijving</h3>
             <p><?php print $StockItem['SearchDetails']; ?></p>
         </div>
-        <div id="StockItemSpecifications">
-            <h3>Artikel specificaties</h3>
+
+    <div id="StockItemSpecifications" style="background-color: #6DAFFE; border-radius: 10px; border-width: 0px">
+        <h3>Artikel specificaties</h3>
+        <?php
+        ?>
+
             <?php
             $CustomFields = json_decode($StockItem['CustomFields'], true);
             if (is_array($CustomFields)) { ?>
@@ -146,15 +159,9 @@ $ItemName = htmlspecialchars($StockItemName, ENT_QUOTES);
                     </tr>
                 <?php } ?>
                 </table><?php
-            } else { ?>
+            } else  ?>
 
-                <p><?php print $StockItem['CustomFields']; ?>.</p>
                 <?php
             }
             ?>
         </div>
-        <?php
-    } else {
-        ?><h2 id="ProductNotFound">Het opgevraagde product is niet gevonden.</h2><?php
-    } ?>
-</div>

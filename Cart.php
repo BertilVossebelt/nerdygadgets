@@ -17,10 +17,6 @@ function createTable($cart, $databaseConnection)
 {
     $totalamount = 0;
     $table = null;
-    if (count($cart) != 0) {
-        $table = "<h1>Inhoud Winkelwagen</h1>
-                  <table border='2'><tr><th>Productnaam</th><th>Afbeelding</th><th>Aantal</th><th>Prijs</th><tr><tr>";
-    }
     $total = 0;
 
     foreach ($cart as $id => $item) {
@@ -39,9 +35,17 @@ function createTable($cart, $databaseConnection)
             $total += $price;
             $totalamount += $amount;
 
-            $table .= "
-                    <th><a href='http://localhost/nerdygadgets/view.php?id=$id'>$StockItemName</a></th>
-                    <th><img src='Public/StockItemIMG/$StockItemPath' width='100' alt='Product afbeelding'></th>
+
+
+
+            $table .= "<h1 style='color: #6DAFFE; border-radius: 10px'</h1> <center>Inhoud Winkelwagen</h1>
+                    <table style='color: #EDF6FF; background-color: #6DAFFE; border-radius 10px; margin: auto'><tr> <th>Productnaam</th><th>Afbeelding</th><th>Aantal</th><th>Prijs</th><tr>
+                    <tr>
+                    <th><a style='color: #EDF6FF' href='http://localhost/nerdygadgets/view.php?id=$id'>$StockItemName</a></th>
+
+                    <th
+                    
+                    ><img src='Public/StockItemIMG/$StockItemPath' width='100' alt='Product afbeelding'></th>
                     <th><form method='GET'><input type='number' name='amount' value='$amount'
                     size='1' style='height:40px; width:60px'>
                     <input type='hidden' name='$id' value='toevoegen'>
@@ -54,12 +58,12 @@ function createTable($cart, $databaseConnection)
     $total = round($total, 2);
 
     if($totalamount == 0) {
-        print("<br><H1><center>Je winkelmand is leeg. <a href='http://localhost/nerdygadgets'><u>Shop nu!</u></a></center></H1>");
+        print("<br><H1 style='color: #6DAFFE'><center>Je winkelmand is leeg. <a href='http://localhost/nerdygadgets'><u>Shop nu!</u></a></center></H1>");
     }
     elseif(empty($_SESSION['email'])) {
         $table .= "<tr><th>Totaal:</th><th><!--afbeelding--></th><th>$totalamount</th><th>$total</th></table>
         <form method='get' action='redirectPaymentChoice.php'>
-        <input style='height: 48px; width: 240px' type='submit' name='submit' value='Bestellen'> </form>";
+        <input style='height: 48px; width: 240px; margin-top: 15px; border-radius: 10px' type='submit' name='submit' value='Bestellen'> </form>";
     } else{
         $table .= "<tr><th>Totaal:</th><th><!--afbeelding--></th><th>$totalamount</th><th>$total</th></table>
         <form method='get' action='RedirectiDeal.php'>
