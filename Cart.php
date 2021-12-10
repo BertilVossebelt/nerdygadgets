@@ -19,6 +19,9 @@ function createTable($cart, $databaseConnection)
     $table = null;
     $total = 0;
 
+    if(count($cart) != 0) $table .= "<h1 style='color: #6DAFFE; border-radius: 10px'</h1> <center>Inhoud Winkelwagen</h1>
+    <table style='color: #EDF6FF; background-color: #6DAFFE; border-radius 10px; margin: auto'><tr> <th>Productnaam</th><th>Afbeelding</th><th>Aantal</th><th>Prijs</th><tr>";
+
     foreach ($cart as $id => $item) {
         if (isset($_GET[$id])) {
             $amount = $_GET["amount"];
@@ -37,14 +40,9 @@ function createTable($cart, $databaseConnection)
             $total += $price;
             $totalamount += $amount;
 
-            $table .= "<h1 style='color: #6DAFFE; border-radius: 10px'</h1> <center>Inhoud Winkelwagen</h1>
-                    <table style='color: #EDF6FF; background-color: #6DAFFE; border-radius 10px; margin: auto'><tr> <th>Productnaam</th><th>Afbeelding</th><th>Aantal</th><th>Prijs</th><tr>
-                    <tr>
+            $table .= "<tr>
                     <th><a style='color: #EDF6FF' href='http://localhost/nerdygadgets/view.php?id=$id'>$StockItemName</a></th>
-
-                    <th
-                    
-                    ><img src='Public/StockItemIMG/$StockItemPath' width='100' alt='Product afbeelding'></th>
+                    <th><img src='Public/StockItemIMG/$StockItemPath' width='100' alt='Product afbeelding'></th>
                     <th><form method='GET'><input type='number' name='amount' value='$amount'
                     size='1' style='height:40px; width:60px'>
                     <input type='hidden' name='$id' value='toevoegen'>
