@@ -1,7 +1,7 @@
 <?php
 include __DIR__ . "/header.php";
-//include "database.php";
 ?>
+
 <!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -56,19 +56,22 @@ function createTable($cart, $databaseConnection)
     }
 
     $total = round($total, 2);
+
     if($totalamount == 0) {
         print("<br><H1 style='color: #6DAFFE'><center>Je winkelmand is leeg. <a href='http://localhost/nerdygadgets'><u>Shop nu!</u></a></center></H1>");
     }
     elseif(empty($_SESSION['email'])) {
         $table .= "<tr><th>Totaal:</th><th><!--afbeelding--></th><th>$totalamount</th><th>$total</th></table>
-
-    <form method='get' action='redirectPaymentChoice.php'>
-        <center><input style='height: 48px; width: 240px; margin-top: 15px; border-radius: 10px' type='submit' name='submit' value='Bestellen'> </form>";
+        <form method='get' action='redirectPaymentChoice.php'>
+        <input style='height: 48px; width: 240px; margin-top: 15px; border-radius: 10px' type='submit' name='submit' value='Bestellen'> </form>";
     } else{
         $table .= "<tr><th>Totaal:</th><th><!--afbeelding--></th><th>$totalamount</th><th>$total</th></table>
-    <form method='get' action='RedirectiDeal.php'>
-        <input style='height: 48px; width: 240px' type='submit' name='submit' value='Bestellen'> </form>";
+        <form method='get' action='RedirectiDeal.php'>
+        <input type='text' name='value' value='$total' hidden>
+        <input style='height: 48px; width: 240px' type='submit' name='submit' value='Bestellen'> 
+        </form>";
     }
+
     return $table;
 }
 if(isset($_GET["stockItemID"])){
