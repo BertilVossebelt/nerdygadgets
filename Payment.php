@@ -11,7 +11,7 @@ include __DIR__ . "/header.php";
         <input style='height:40px; width:300px; margin-bottom:10px' type="text" name="Voornaam" required> <br>
         <label style='margin-bottom:0px' for="Tussenvoegsel">Tussenvoegsel (optioneel):</label><br>
         <input style='height:40px; width:300px; margin-bottom:10px' type="text" name="Tussenvoegsel"> <br>
-        <label style='margin-bottom:0px' for="Achternaam">Achternaam:</label><br>
+        <label style='margin-bottom:0px' for="Achternaam">Achternaam:</label> <br>
         <input style='height:40px; width:300px; margin-bottom:10px' type="text" name="Achternaam" required> <br>
         <label style='margin-bottom:0px' for="Postcode">Postcode:</label><label style='margin-bottom:0px; margin-left:36px' for="Huisnummer">Huisnr.:</label><label style='margin-bottom:0px; margin-left:28px' for="Toevoeging">Toevoeging (optioneel):</label><br>
         <input style='height:40px; width:90px; margin-bottom:10px' type="text" name="Postcode" required>

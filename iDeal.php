@@ -2,6 +2,7 @@
 include __DIR__ . "/header.php";
 $eMail = $_SESSION['email'];
 $klantnummer = $_SESSION['klantnummer'];
+$cart = getCart();
 ?>
 
 <div>
@@ -15,34 +16,42 @@ $klantnummer = $_SESSION['klantnummer'];
     </form>
 
     <?php
+        if (isset($_GET['Betalen'])) {
+            $sql = "SELECT max(OrderID) FROM orders";
 
-    //$sql = "SELECT klantnummer FROM accounts WHERE email ='$eMail'";
+            $Statement = mysqli_prepare($databaseConnection, $sql);
+            mysqli_stmt_execute($Statement);
+            $ReturnableResult = mysqli_stmt_get_result($Statement);
 
-/*
-    $Statement = mysqli_prepare($databaseConnection, $sql);
-    mysqli_stmt_execute($Statement);
-    $ReturnableResult = mysqli_stmt_get_result($Statement);
+            if (mysqli_num_rows($ReturnableResult) == 1) {
+                $record = mysqli_fetch_assoc($ReturnableResult);
 
-    if (mysqli_num_rows($ReturnableResult) == 1) {
-        $record = mysqli_fetch_assoc($ReturnableResult);
+                $OrderID = $record['max(OrderID)'];
+                $OrderID++;
+
+            $date = date("Y-m-d");
+            $sql = "INSERT INTO orders VALUES(
+                '$OrderID', '$klantnummer','$date')";
+
+            $Statement = mysqli_prepare($databaseConnection, $sql);
+            mysqli_stmt_execute($Statement);
+
+            foreach ($cart as $id => $item) {
+                $StockItemName = $item['StockItemName'];
+                $amount = $item['amount'];
+                $sql = "INSERT INTO orderlines VALUES(
+                '', '$OrderID', '$id', '$StockItemName', '$amount')";
+
+                $Statement = mysqli_prepare($databaseConnection, $sql);
+                mysqli_stmt_execute($Statement);
+
+                $sql = "UPDATE stockitemholdings SET QuantityOnHand = QuantityOnHand - '$amount' WHERE StockItemID = '$id' ";
+
+                $Statement = mysqli_prepare($databaseConnection, $sql);
+                mysqli_stmt_execute($Statement);
+            }
+        }
     }
-*/
-
-
-    if(isset($_GET['Betalen'])){
-        $date = date("Y-m-d");
-        $sql = "INSERT INTO orders VALUES(
-                '', '$klantnummer','$date')";
-
-        $Statement = mysqli_prepare($databaseConnection, $sql);
-        mysqli_stmt_execute($Statement);
-
-        /*
-        $sql = "INSERT INTO orderlines VALUES(
-                '', '', '')";
-*/
-    }
-
     ?>
 
 
