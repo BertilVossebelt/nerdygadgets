@@ -1,6 +1,8 @@
 <?php
 include __DIR__ . "/header.php";
+include "Extracted.php";
 require_once("database.php");
+
 ?>
 <h1 style='margin-left:600px'>Account aanmaken</h1>
 <div>
@@ -24,8 +26,8 @@ require_once("database.php");
         <br>
         <label style='margin-bottom:0px' for="Woonplaats">Woonplaats:</label> <br>
         <input style='height:40px; width: 200px; margin-bottom:10px' type="text" name="Woonplaats" required> <br>
-        <label style='margin-bottom:0px' for="eMail">E-Mail:</label> <br>
-        <input style='height:40px; width: 300px; margin-bottom:10px' type="text" name="eMail" required> <br>
+        <label style='margin-bottom:0px' for="Email">E-Mail:</label> <br>
+        <input style='height:40px; width: 300px; margin-bottom:10px' type="email" name="Email" required> <br>
         <label style='margin-bottom:0px' for="Wachtwoord">Wachtwoord:</label> <br>
         <input style='height:40px; width: 300px; margin-bottom:10px' type="password" name="Wachtwoord" required> <br>
         <input style='height:40px; width:100px; margin-bottom:10px' type="submit" name="registreer" value="Registreer">
@@ -38,10 +40,8 @@ require_once("database.php");
             $huisnummer = $_GET['Huisnummer'];
             $toevoeging = $_GET['Toevoeging'];
             $woonplaats = $_GET['Woonplaats'];
-            $email = $_GET['eMail'];
-            $wachtwoord = $_GET['Wachtwoord'];
-
-            $wachtwoord = md5($wachtwoord);
+            $email = $_GET['Email'];
+            $wachtwoord = password_hash($_GET['Wachtwoord'], PASSWORD_BCRYPT);
 
             try {
                 $sql = "INSERT INTO accounts (voornaam, tussenvoegsel, achternaam, postcode, huisnummer, toevoeging, woonplaats, email, wachtwoord) 
@@ -60,18 +60,8 @@ require_once("database.php");
 
             if (mysqli_num_rows($ReturnableResult) == 1) {
                 $record = mysqli_fetch_assoc($ReturnableResult);
-                $_SESSION['email'] = $record['email'];
-                $_SESSION['klantnummer'] = $record['klantnummer'];
-                $_SESSION['voornaam'] = $record['voornaam'];
-                $_SESSION['tussenvoegsel'] = $record['tussenvoegsel'];
-                $_SESSION['achternaam'] = $record['achternaam'];
-                $_SESSION['postcode'] = $record['postcode'];
-                $_SESSION['huisnummer'] = $record['huisnummer'];
-                $_SESSION['toevoeging'] = $record['toevoeging'];
-                $_SESSION['woonplaats'] = $record['woonplaats'];
-                echo "<script>
-        window.location = 'Payment.php';
-    </script>";
+                extractedAccountData($record);
+                echo "<script>window.location = 'Account.php';</script>";
             }
         }
         ?>

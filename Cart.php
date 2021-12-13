@@ -86,13 +86,15 @@ if (count($cart) > 0) {
             <th>$value</th>
          </table>";
 }
+
+
 if (isset($_SESSION['email'])) {
-    echo "<form method='get' action='Payment.php'>
+    echo "<form method='GET' action='Payment.php'>
             <input type='text' name='value' value='$value' hidden>
             <input style='height: 48px; width: 240px' type='submit' name='submit' value='Bestellen'> 
         </form>";
 } else {
-    echo "<form method='get' action='Login.php'>
+    echo "<form method='GET' action='Login.php'>
             <input style='height: 48px; width: 240px; margin-top: 15px; border-radius: 10px' type='submit' name='submit' value='Bestellen'>
           </form>";
 }

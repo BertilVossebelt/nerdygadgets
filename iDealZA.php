@@ -16,15 +16,14 @@ include __DIR__ . '/header.php';
     <input style='height:40px; width:100px; margin-bottom:10px; margin-left:10px' type="text" name="Toevoeging"> <br>
     <label style='margin-bottom:0px' for="Woonplaats">Woonplaats:</label> <br>
     <input style='height:40px; width: 200px; margin-bottom:10px' type="text" name="Woonplaats" required> <br>
-    <label style='margin-bottom:0px' for="eMail">E-Mail:</label> <br>
-    <input style='height:40px; width: 300px; margin-bottom:10px' type="text" name="eMail" required> <br>
+    <label style='margin-bottom:0px' for="Email">E-Mail:</label> <br>
+    <input style='height:40px; width: 300px; margin-bottom:10px' type="text" name="Email" required> <br>
     <input style='height:40px; width:100px; margin-bottom:10px' type="submit" name="Bestel" value="Bestel!">
 </form>
 
 <?php
 
 if(isset($_GET['Bestel'])){
-
     $voornaam = $_GET['Voornaam'];
     $tussenvoegsel = $_GET['Tussenvoegsel'];
     $achternaam = $_GET['Achternaam'];
@@ -32,7 +31,7 @@ if(isset($_GET['Bestel'])){
     $huisnummer = $_GET['Huisnummer'];
     $toevoeging = $_GET['Toevoeging'];
     $woonplaats = $_GET['Woonplaats'];
-    $email = $_GET['eMail'];
+    $email = $_GET['Email'];
     $date = date("Y-m-d");
 
     $sql = "INSERT INTO orders VALUES(
@@ -48,11 +47,6 @@ if(isset($_GET['Bestel'])){
 
     $Statement = mysqli_prepare($databaseConnection, $sql);
     mysqli_stmt_execute($Statement);
-/*
-     echo "<script>
-        window.location = 'categories.php';
-    </script>";
-*/
 }
 
 ?>
