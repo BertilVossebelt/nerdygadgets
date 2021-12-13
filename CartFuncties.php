@@ -33,3 +33,9 @@ function adjustCartAmount($amount, $stockItemID){
     $cart[$stockItemID]['amount'] = $amount;
     saveCart($cart);
 }
+
+function deleteFromCart($stockItemID){
+    $cart = getCart();
+    unset($cart[$stockItemID]);
+    saveCart($cart);
+}
