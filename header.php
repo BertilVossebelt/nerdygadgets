@@ -70,7 +70,7 @@ $databaseConnection = connectToDatabase();
             </li>";
             }else{
                 echo "<li>
-                <a href='paymentChoice.php' class='HrefDecoration'><i class='fa fa-user account' aria-hidden='true'></i> Log-In</a>
+                <a href='Login.php' class='HrefDecoration'><i class='fa fa-user account' aria-hidden='true'></i> Log-In</a>
             </li>" ;
             } ?>
             <li>

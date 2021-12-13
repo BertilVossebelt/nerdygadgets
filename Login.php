@@ -1,13 +1,15 @@
 <?php
 include __DIR__ . "/header.php";
+require_once("database.php");
+
 if(isset($_SESSION['email'])){
     echo"U bent al ingelogd.";
     echo "<form method='get'>
-            <input style='width:215px; margin-left:300px; margin-bottom:0px'  type='submit' name='uitloggen' value='Log Uit'>
+            <input style='width:215px; margin-left:300px; margin-bottom:0'  type='submit' name='uitloggen' value='Log Uit'>
 ";
     if(isset($_GET['uitloggen'])){
         session_destroy();
-        header("Location: paymentChoice.php");
+        header("Location: Login.php");
     }
 } else{
 ?>
@@ -20,20 +22,14 @@ if(isset($_SESSION['email'])){
     <label style='margin-left:300px; margin-bottom:0px' for="Wachtwoord">Wachtwoord:</label> <p style='display:inline; margin-left:650px'>hieronder te drukken.</p><br>
     <input style='margin-bottom:10px; margin-left:300px; width:300px; height:40px' type="password" name="Wachtwoord" required> <br>
     <input style='width:215px; margin-left:300px; margin-bottom:0px'  type="submit" name="Inloggen" value="Log in">
-    </form> <form method="get" action="redirectPayment.php">
+    </form> <form method="get" action="Register.php">
         <input style='width:215px;margin-left:1047px' type="submit" name="Registreren" value="Registreren">
     </form> <br>
 
 
     <a style='margin-left:700px' href='iDealZA.php'> Bestellen zonder account <br></a>
 
-
-
     <?php
-
-    require_once("database.php");
-    // session_start();
-
     if(isset($_GET['Inloggen'])) {
         $email = $_GET['eMail'];
         $wachtwoord = $_GET['Wachtwoord'];
@@ -59,16 +55,13 @@ if(isset($_SESSION['email'])){
                 $_SESSION['huisnummer'] = $record['huisnummer'];
                 $_SESSION['toevoeging'] = $record['toevoeging'];
                 $_SESSION['woonplaats'] = $record['woonplaats'];
-                echo "<script>
-        window.location = 'categories.php';
-    </script>";
+                echo "<script>window.location = 'account.php';</script>";
         }
             } else{
                 echo "Het wachtwoord of email is onjuist.";
             }
 
 //        $ReturnableResult = mysqli_fetch_all($ReturnableResult, MYSQLI_ASSOC);
-
     }
     }
     ?>
