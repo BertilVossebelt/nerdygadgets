@@ -3,7 +3,7 @@ include __DIR__ . "/header.php";
 
 if(!isset($_SESSION['email'])){
     echo "U bent nog niet ingelogd.";
-    echo "<form method='get' action='paymentChoice.php'>
+    echo "<form method='get' action='Login.php'>
             <input style='width:215px; margin-left:300px; margin-bottom:0px'  type='submit' name='logIn' value='Log hier in'>";
 } else{
 ?>
@@ -20,10 +20,7 @@ if(!isset($_SESSION['email'])){
 <?php
 
     if(isset($_GET['wijzigww'])){
-        echo "<script>
-            window.location = 'changePassword.php';
-        </script>";
+        header("Location: changePassword.php");
     }
 }
 ?>
-

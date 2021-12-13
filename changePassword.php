@@ -15,11 +15,7 @@ include __DIR__ . "/header.php"
         $sql = "UPDATE accounts SET wachtwoord = '$wachtwoord' WHERE klantnummer='$klantnummer'";
         $Statement = mysqli_prepare($databaseConnection, $sql);
         mysqli_stmt_execute($Statement);
-        echo "<script>
-        window.location = 'Account.php'
-    </script>";
+        header("Location: Account.php");;
     }
     ?>
 </form>
-
-
