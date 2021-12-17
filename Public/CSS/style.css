@@ -527,3 +527,11 @@ ul#ul-class-price li {
     text-align: center;
     color: #6DAFFE;
 }
+.wishlist-deletion {
+    color: #FFFFFF;
+    background-color: #6DAFFE00;
+    border: black;
+}
+.HrefDecoration i.trash {
+    color: #FFFFFF;
+}

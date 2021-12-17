@@ -11,6 +11,7 @@ if (count($wishlist) > 0) {
         <th>Productnaam</th>
         <th>Afbeelding</th>
         <th>Prijs</th>
+        <th>Verwijderen</th>
     <tr>";
 } else {
     echo "<br><h1 class='empty-wishlist'>Je verlanglijstje is leeg. <a href='http://localhost/nerdygadgets'><u>Shop nu!</u></a></h1>";
@@ -32,8 +33,15 @@ foreach ($wishlist as $id => $item) {
                 <th><!--Price-->
                     $roundedPrice
                 </th>
+                <th><!--DeleteButton-->
+                    <form method='get' action='wishlist.php'>
+                    <button type='submit' name='deleteFromWishlist' class='wishlist-deletion'><i class='fa fa-trash' aria-hidden='true'></i></button>
+                    </form>
+                </th>
               </tr>";
-
+    if(isset($wishlist['deleteFromWishlist'])) {
+        deleteFromWishlist($id);
+    }
 }
 
 
