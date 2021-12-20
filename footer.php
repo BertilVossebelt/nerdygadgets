@@ -3,7 +3,7 @@
 
     <?php
 
-    if(!empty($_SESSION['ip'])){
+    if(empty($_SESSION['ip'])){
         $ip = $_SERVER['REMOTE_ADDR'];
         $_SESSION['ip'] = $ip;
 
