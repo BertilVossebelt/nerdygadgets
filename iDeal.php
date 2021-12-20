@@ -18,7 +18,7 @@ if(isset($_GET['pay'])) setupPayment($_GET['value'], 'Test betaling', '1');
         <button style='width:215px;margin-left:300px' type='submit' name='pay' value='pay'>Betalen</button>
     </form>
     <?php
-        if (isset($_GET['Betalen'])) {
+        if (isset($_GET['pay'])) {
             $sql = "SELECT max(OrderID) FROM orders";
 
             $Statement = mysqli_prepare($databaseConnection, $sql);
@@ -54,6 +54,9 @@ if(isset($_GET['pay'])) setupPayment($_GET['value'], 'Test betaling', '1');
             }
         }
     }
+
+    include __DIR__ . "/footer.php";
+
     ?>
 
 

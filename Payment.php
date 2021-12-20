@@ -78,6 +78,8 @@ require_once("database.php");
     </script>";
             }
         }
+
+        include __DIR__ . "/footer.php";
         ?>
 
     </form>
