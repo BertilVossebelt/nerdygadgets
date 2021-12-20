@@ -530,7 +530,7 @@ ul#ul-class-price li {
 .wishlist-deletion {
     color: #FFFFFF;
     background-color: #6DAFFE00;
-    border: black;
+    font-size: 23px;
 }
 .HrefDecoration i.trash {
     color: #FFFFFF;
