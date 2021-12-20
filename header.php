@@ -17,8 +17,23 @@ $ReturnableResult = mysqli_stmt_get_result($Statement);
 if (mysqli_num_rows($ReturnableResult) == 1) {
     $record = mysqli_fetch_assoc($ReturnableResult);
 
-    $_SESSION['rating'] = $record['rating'] * 2;
+    $_SESSION['rating'] = $record['rating'];
 }
+
+$sql = "SELECT aantal FROM rating";
+
+$Statement = mysqli_prepare($databaseConnection, $sql);
+mysqli_stmt_execute($Statement);
+$ReturnableResult = mysqli_stmt_get_result($Statement);
+
+if (mysqli_num_rows($ReturnableResult) == 1) {
+    $record = mysqli_fetch_assoc($ReturnableResult);
+
+    $_SESSION['aantal'] = $record['aantal'];
+
+    $_SESSION['rating'] = ceil($_SESSION['rating'] / $_SESSION['aantal'] * 2);
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

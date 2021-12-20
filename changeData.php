@@ -63,5 +63,5 @@ if(isset($_GET['wijzig'])) {
     </script>";
     }
 }
-
+include __DIR__ . "/footer.php";
 ?>

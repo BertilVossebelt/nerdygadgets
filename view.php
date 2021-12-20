@@ -18,6 +18,20 @@ $StockItemID = $StockItem["StockItemID"];
 $StockItemPrice = $StockItem["SellPrice"];
 $StockItemName = $StockItem["StockItemName"];
 $ItemName = htmlspecialchars($StockItemName, ENT_QUOTES);
+$Voorraad = str_replace("Voorraad: ", "", $StockItem["QuantityOnHand"]);
+$Voorraad = intval($Voorraad);
+
+if($Voorraad < 10){
+    ?>
+    <script>
+function myFunction()
+{
+    alert('Let op, er zijn nog maar ' + <?php print($Voorraad); ?> + ' van dit product op voorraad.');
+}
+myFunction()
+</script>
+<?php
+}
 ?>
 
 <div id="CenteredContent">
@@ -165,3 +179,6 @@ $ItemName = htmlspecialchars($StockItemName, ENT_QUOTES);
             }
             ?>
         </div>
+    <?php
+    include __DIR__ . "/footer.php";
+?>

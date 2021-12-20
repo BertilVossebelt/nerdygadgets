@@ -31,5 +31,7 @@ if(!isset($_SESSION['email'])){
         </script>";
     }
 }
+
+include __DIR__ . "/footer.php";
 ?>
 

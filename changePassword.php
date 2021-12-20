@@ -19,6 +19,7 @@ include __DIR__ . "/header.php"
         window.location = 'Account.php'
     </script>";
     }
+    include __DIR__ . "/footer.php";
     ?>
 </form>
 

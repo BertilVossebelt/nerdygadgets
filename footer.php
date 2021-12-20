@@ -14,19 +14,19 @@
         <h2>Met hoeveel sterren beoordeeld u ons?</h2>
         <form>
             <label>
-                <input type="radio" id='1' name="rate">1 Ster
+                <input type="radio" value="1" name="rate">1 Ster
             </label>
             <label>
-                <input type="radio" id='2' name="rate">2 Sterren
+                <input type="radio" value="2" name="rate">2 Sterren
             </label>
             <label>
-                <input type="radio" id='3' name="rate">3 Sterren
+                <input type="radio" value="3" name="rate">3 Sterren
             </label>
             <label>
-                <input type="radio" id='4' name="rate">4 Sterren
+                <input type="radio" value="4" name="rate">4 Sterren
             </label>
             <label>
-                <input type="radio" id='5' name="rate">5 Sterren
+                <input type="radio" value="5" name="rate">5 Sterren
             </label>
             <input type="submit" name="send" value="Verstuur">
         </form>
@@ -34,14 +34,9 @@
     </body>
         <?php
     }
-            elseif (isset($_GET['send'])) {
-                if (isset($_GET['rate'])) {
-                    $_SESSION['rate'] = $_GET['rate'];
-                }
-            }
-    var_dump($_SESSION['rate']);
+            if (isset($_GET['send'])) {
+                $_SESSION['rate'] = $_GET['rate'];
 
-/*
 
                 $sql = "SELECT aantal FROM rating";
 
@@ -65,20 +60,15 @@
                     $record = mysqli_fetch_assoc($ReturnableResult);
 
                     $_SESSION['rating'] = $record['rating'];
-                    $_SESSION['rating'] = $_SESSION['rating'] + $_SESSION['rate'] / $_SESSION['aantal'];
-            }
+                    $_SESSION['rating'] = $_SESSION['rating'] + $_SESSION['rate'];
+                }
                 $rating = $_SESSION['rating'];
                 $aantal = $_SESSION['aantal'];
 
-                $sql = "INSERT INTO rating VALUES('$rating', '$aantal')";
+                $sql = "UPDATE rating SET rating='$rating', aantal='$aantal'";
                 $Statement = mysqli_prepare($databaseConnection, $sql);
                 mysqli_stmt_execute($Statement);
             }
-    $rating = $_SESSION['rating'];
-    $aantal = $_SESSION['aantal'];
-    $rate = $_SESSION['rate'];
-    var_dump($rating, $aantal, $rate);
-*/
 ?>
 </div>
 </div>
