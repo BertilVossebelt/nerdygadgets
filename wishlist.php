@@ -1,7 +1,4 @@
 <?php
-include __DIR__ . "/header.php";
-
-
 include "WishlistFuncties.php";
 include "header.php";
 $wishlist = getWishlist();
