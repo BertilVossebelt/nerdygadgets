@@ -121,12 +121,12 @@ $ItemName = htmlspecialchars($StockItemName, ENT_QUOTES);
                 <input type="submit" name="submit" value="Voeg toe aan winkelmandje" style="border-width: 0px; box-shadow 10px 10px 8px; border-radius: 10px">
             </form>
         </div>
-        <div id="StockItemDescription" style="background-color: #6DAFFE; border-radius: 10px; border-width: 0px">
+        <div id="StockItemDescription" class="box-shadow" style="background-color: #6DAFFE; border-radius: 10px; border-width: 0px">
             <h3>Artikel beschrijving</h3>
             <p><?php print $StockItem['SearchDetails']; ?></p>
         </div>
 
-    <div id="StockItemSpecifications" style="background-color: #6DAFFE; border-radius: 10px; border-width: 0px">
+    <div id="StockItemSpecifications" class="box-shadow" style="background-color: #6DAFFE; border-radius: 10px; border-width: 0px">
         <h3>Artikel specificaties</h3>
         <?php
         ?>

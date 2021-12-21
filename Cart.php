@@ -41,7 +41,7 @@ function createTable($cart, $databaseConnection)
             $totalamount += $amount;
 
             $table .= "<tr>
-                    <th><a style='color: #EDF6FF' href='http://localhost/nerdygadgets/view.php?id=$id'>$StockItemName</a></th>
+                    <th><a style='color: #EDF6FF'  href='http://localhost/nerdygadgets/view.php?id=$id'>$StockItemName</a></th>
                     <th><img src='Public/StockItemIMG/$StockItemPath' width='100' alt='Product afbeelding'></th>
                     <th><form method='GET'><input type='number' name='amount' value='$amount'
                     size='1' style='height:40px; width:60px'>
