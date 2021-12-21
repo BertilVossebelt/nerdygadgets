@@ -78,6 +78,7 @@ if(isset($_GET["stockItemID"])){
     $stockItemID = $_GET["stockItemID"];
     echo "<a href='view.php?id=$stockItemID'> Naar artikelpagina van artikel $stockItemID <br></a>";
 }
+
 include __DIR__ . "/footer.php";
 ?>
 
