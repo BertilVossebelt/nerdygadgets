@@ -1,14 +1,45 @@
 <!-- de inhoud van dit bestand wordt bovenaan elke pagina geplaatst -->
 <?php
 include "database.php";
+include "CartFuncties.php";
 include "env_loader.php";
+$cart = getCart();
+
 
 $databaseConnection = connectToDatabase();
+
+$sql = "SELECT rating FROM rating";
+
+$Statement = mysqli_prepare($databaseConnection, $sql);
+mysqli_stmt_execute($Statement);
+$ReturnableResult = mysqli_stmt_get_result($Statement);
+
+if (mysqli_num_rows($ReturnableResult) == 1) {
+    $record = mysqli_fetch_assoc($ReturnableResult);
+
+    $_SESSION['rating'] = $record['rating'];
+}
+
+$sql = "SELECT aantal FROM rating";
+
+$Statement = mysqli_prepare($databaseConnection, $sql);
+mysqli_stmt_execute($Statement);
+$ReturnableResult = mysqli_stmt_get_result($Statement);
+
+if (mysqli_num_rows($ReturnableResult) == 1) {
+    $record = mysqli_fetch_assoc($ReturnableResult);
+
+    $_SESSION['aantal'] = $record['aantal'];
+
+    $_SESSION['rating'] = ceil($_SESSION['rating'] / $_SESSION['aantal'] * 2);
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <title>NerdyGadgets</title>
+
 
     <!-- Javascript -->
     <script src="Public/JS/fontawesome.js"></script>
@@ -21,6 +52,7 @@ $databaseConnection = connectToDatabase();
     <link rel="stylesheet" href="Public/CSS/style.css" type="text/css">
     <link rel="stylesheet" href="Public/CSS/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="Public/CSS/typekit.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 <div class="Background">
@@ -46,12 +78,29 @@ $databaseConnection = connectToDatabase();
                 <li>
                     <a href="categories.php" class="HrefDecoration">Alle categorieën</a>
                 </li>
-                    <a href="Cart.php" class="HrefDecoration">Winkelwagen</a>
             </ul>
         </div>
 <!-- code voor US3: zoeken -->
-
         <ul id="ul-class-navigation">
+            <h2>Klanten beoordelen ons met een <?php echo $_SESSION['rating'] ?>!</h2>
+            <li>
+                <a href="wishlist.php" class="HrefDecoration"><i class="fa fa-heart wishlist" aria-hidden="true"></i></a>
+            </li>
+            <li>
+                <a href="Cart.php" class="HrefDecoration"><i class="fa fa-shopping-cart cart" aria-hidden="true"></i>  <?php if(count($cart) != 0) print("[".count($cart)."]")?></a>
+            </li>
+            <li>
+                <a href="Account.php" class="HrefDecoration"><i class="fa fa-user account" aria-hidden="true"></i> Account</a>
+            </li>
+            <?php if(!empty($_SESSION['email'])){
+                echo "<li>
+                <a href='Log-Uit.php' class='HrefDecoration'><i class='fa fa-user account' aria-hidden='true'></i> Log-Uit</a>
+            </li>";
+            }else{
+                echo "<li>
+                <a href='paymentChoice.php' class='HrefDecoration'><i class='fa fa-user account' aria-hidden='true'></i> Log-In</a>
+            </li>" ;
+            } ?>
             <li>
                 <a href="browse.php" class="HrefDecoration"><i class="fas fa-search search"></i> Zoeken</a>
             </li>

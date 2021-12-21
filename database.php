@@ -6,7 +6,7 @@ function connectToDatabase() {
 
     mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT); // Set MySQLi to throw exceptions
     try {
-        $Connection = mysqli_connect(env('DB_HOST'), "root", "root", "nerdygadgets");
+        $Connection = mysqli_connect(env('DB_HOST'), env('DB_USERNAME'), env('DB_PASSWORD'), env('DB_NAME'));
         mysqli_set_charset($Connection, 'latin1');
         $DatabaseAvailable = true;
     } catch (mysqli_sql_exception $e) {
@@ -82,7 +82,6 @@ function getStockItem($id, $databaseConnection) {
 }
 
 function getStockItemImage($id, $databaseConnection) {
-
     $Query = "
                 SELECT ImagePath
                 FROM stockitemimages 
@@ -93,6 +92,21 @@ function getStockItemImage($id, $databaseConnection) {
     mysqli_stmt_execute($Statement);
     $R = mysqli_stmt_get_result($Statement);
     $R = mysqli_fetch_all($R, MYSQLI_ASSOC);
+
+    if (!isset($R)) {
+        $Query = "
+                SELECT ImagePath
+                FROM stockgroups G
+                JOIN stockitemstockgroups S ON G.StockGroupID = S.StockGroupID
+                WHERE StockItemID = ?";
+
+        $Statement = mysqli_prepare($databaseConnection, $Query);
+        mysqli_stmt_bind_param($Statement, "i", $id);
+        mysqli_stmt_execute($Statement);
+        $R = mysqli_stmt_get_result($Statement);
+        $R = mysqli_fetch_all($R, MYSQLI_ASSOC);
+    }
+
 
     return $R;
 }

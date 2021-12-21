@@ -23,5 +23,5 @@ $StockGroups = getStockGroups($databaseConnection);
             }
             $i++;
         }
-    } ?>
+    } include __DIR__ . "/footer.php";?>
 </div>
