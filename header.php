@@ -91,11 +91,11 @@ if (mysqli_num_rows($ReturnableResult) == 1) {
             </li>
 
             <?php if(!empty($_SESSION)){
-                echo "
+                ?>
             <li>
                 <a href='Account.php' class='HrefDecoration'><i class='fa fa-user account' aria-hidden='true'></i> Account</a>
             </li>
-            <?php if(!empty($_SESSION['email'])){
+            <?php } if(!empty($_SESSION['email'])){
                 echo "<li>
                 <a href='Log-Uit.php' class='HrefDecoration'><i class='fa fa-user account' aria-hidden='true'></i> Log-Uit</a>
             </li>";
