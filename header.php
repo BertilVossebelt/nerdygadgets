@@ -87,18 +87,21 @@ if (mysqli_num_rows($ReturnableResult) == 1) {
                 <a href="wishlist.php" class="HrefDecoration"><i class="fa fa-heart wishlist" aria-hidden="true"></i></a>
             </li>
             <li>
-                <a href="Cart.php" class="HrefDecoration"><i class="fa fa-shopping-cart cart" aria-hidden="true"></i>  <?php if(count($cart) != 0) print("[".count($cart)."]")?></a>
+                <a href="Cart.php" class="HrefDecoration"><i class="fa fa-shopping-cart cart" aria-hidden="true"></i>  Winkelwagen <?php if(count($cart) != 0) print("[".count($cart)."]")?></a>
             </li>
+
+            <?php if(!empty($_SESSION)){
+                ?>
             <li>
-                <a href="Account.php" class="HrefDecoration"><i class="fa fa-user account" aria-hidden="true"></i> Account</a>
+                <a href='Account.php' class='HrefDecoration'><i class='fa fa-user account' aria-hidden='true'></i> Account</a>
             </li>
-            <?php if(!empty($_SESSION['email'])){
+            <?php } if(!empty($_SESSION['email'])){
                 echo "<li>
                 <a href='Log-Uit.php' class='HrefDecoration'><i class='fa fa-user account' aria-hidden='true'></i> Log-Uit</a>
             </li>";
-            }else{
+            } else {
                 echo "<li>
-                <a href='paymentChoice.php' class='HrefDecoration'><i class='fa fa-user account' aria-hidden='true'></i> Log-In</a>
+                <a href='Login.php' class='HrefDecoration'><i class='fa fa-user account' aria-hidden='true'></i> Log-In</a>
             </li>" ;
             } ?>
             <li>
