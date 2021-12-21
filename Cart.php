@@ -36,7 +36,7 @@ function createTable($cart, $databaseConnection)
             $totalamount += $amount;
 
 
-
+//
 
             $table .= "<h1 style='color: #6DAFFE; border-radius: 10px'</h1> <center>Inhoud Winkelwagen</h1>
                     <table style='color: #EDF6FF; background-color: #6DAFFE; border-radius 10px; margin: auto'><tr> <th>Productnaam</th><th>Afbeelding</th><th>Aantal</th><th>Prijs</th><tr>
