@@ -291,7 +291,7 @@ function berekenVerkoopPrijs($adviesPrijs, $btw)
             </a>
 
             <!--  einde coderegel 2 van User story: bekijken producten  -->
-        <?php } ?>
+        <?php }  ?>
 
         <form id="PageSelector">
 

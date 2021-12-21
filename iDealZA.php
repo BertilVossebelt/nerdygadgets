@@ -10,20 +10,22 @@ include __DIR__ . '/header.php';
     <input style='height:40px; width:300px; margin-bottom:10px' type="text" name="Tussenvoegsel"> <br>
     <label style='margin-bottom:0px' for="Achternaam">Achternaam:</label><br>
     <input style='height:40px; width:300px; margin-bottom:10px' type="text" name="Achternaam" required> <br>
-    <label style='margin-bottom:0px' for="Postcode">Postcode:</label><label style='margin-bottom:0px; margin-left:36px' for="Huisnummer">Huisnr.:</label><label style='margin-bottom:0px; margin-left:28px' for="Toevoeging">Toevoeging (optioneel):</label><br>
+    <label style='margin-bottom:0px' for="Postcode">Postcode:</label><label style='margin-bottom:0px; margin-left:36px' for="Huisnummer">Huisnr.:</label><label
+            style='margin-bottom:0px; margin-left:28px' for="Toevoeging">Toevoeging (optioneel):</label><br>
     <input style='height:40px; width:90px; margin-bottom:10px' type="text" name="Postcode" required>
-    <input style='height:40px; width:65px; margin-bottom:10px; margin-left:10px' type="number" name="Huisnummer" required>
+    <input style='height:40px; width:65px; margin-bottom:10px; margin-left:10px' type="number" name="Huisnummer"
+           required>
     <input style='height:40px; width:100px; margin-bottom:10px; margin-left:10px' type="text" name="Toevoeging"> <br>
     <label style='margin-bottom:0px' for="Woonplaats">Woonplaats:</label> <br>
     <input style='height:40px; width: 200px; margin-bottom:10px' type="text" name="Woonplaats" required> <br>
-    <label style='margin-bottom:0px' for="eMail">E-Mail:</label> <br>
-    <input style='height:40px; width: 300px; margin-bottom:10px' type="text" name="eMail" required> <br>
+    <label style='margin-bottom:0px' for="Email">E-Mail:</label> <br>
+    <input style='height:40px; width: 300px; margin-bottom:10px' type="text" name="Email" required> <br>
     <input style='height:40px; width:100px; margin-bottom:10px' type="submit" name="Bestel" value="Bestel!">
 </form>
 
 <?php
+if (isset($_GET['Bestel'])) {
 
-if(isset($_GET['Bestel'])){
 
     $voornaam = $_GET['Voornaam'];
     $tussenvoegsel = $_GET['Tussenvoegsel'];
@@ -32,7 +34,7 @@ if(isset($_GET['Bestel'])){
     $huisnummer = $_GET['Huisnummer'];
     $toevoeging = $_GET['Toevoeging'];
     $woonplaats = $_GET['Woonplaats'];
-    $email = $_GET['eMail'];
+    $email = $_GET['Email'];
     $date = date("Y-m-d");
 
     $sql = "INSERT INTO orders VALUES(
@@ -48,11 +50,11 @@ if(isset($_GET['Bestel'])){
 
     $Statement = mysqli_prepare($databaseConnection, $sql);
     mysqli_stmt_execute($Statement);
-/*
-     echo "<script>
-        window.location = 'categories.php';
-    </script>";
-*/
+    /*
+         echo "<script>
+            window.location = 'categories.php';
+        </script>";
+    */
 }
 include __DIR__ . "/footer.php";
 ?>
