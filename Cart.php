@@ -97,6 +97,8 @@ if (isset($_SESSION['email'])) {
             <input style='height: 48px; width: 240px; margin-top: 15px; border-radius: 10px' type='submit' name='submit' value='Bestellen'>
           </form>";
 }
+
+include __DIR__ . "/footer.php";
 ?>
 </body>
 </html>

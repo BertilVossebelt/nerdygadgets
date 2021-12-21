@@ -15,5 +15,6 @@ include __DIR__ . "/header.php"
         mysqli_stmt_execute($Statement);
         header("Location: Account.php");;
     }
+    include __DIR__ . "/footer.php";
     ?>
 </form>

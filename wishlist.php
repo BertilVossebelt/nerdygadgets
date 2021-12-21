@@ -1,4 +1,8 @@
 <?php
+include __DIR__ . "/header.php";
+
+?>
+=======
 include "WishlistFuncties.php";
 include "header.php";
 $wishlist = getWishlist();
@@ -54,5 +58,6 @@ foreach ($wishlist as $id => $item) {
         }
     }
 }
-
-
+<?php
+      include __DIR__ . "/footer.php";
+?>

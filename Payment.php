@@ -51,8 +51,8 @@ if(isset($_GET['pay'])) setupPayment($_GET['value'], 'Test betaling', '1');
                 mysqli_stmt_execute($Statement);
             }
         }
-    }
-    ?>
+        include __DIR__ . "/footer.php";
+        ?>
 
 
 </div>

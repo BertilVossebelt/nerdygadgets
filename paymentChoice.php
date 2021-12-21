@@ -61,6 +61,7 @@ if (isset($_SESSION['email'])){
         }
     }
     }
+    include __DIR__ . "/footer.php";
     ?>
 
 
