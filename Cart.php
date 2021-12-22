@@ -119,7 +119,7 @@ if ($totalAmount != 0) {
 
 <?php
 if(!empty($_SESSION['id'])) {
-    echo"<h1 style='text-align:center'>Misschien is dit ook wat voor U?</h1>";
+    echo"<h1 style='text-align:center'>Mensen zochten ook</h1>";
     $id = $_SESSION['id'];
     $sql = "SELECT StockGroupID FROM stockitemstockgroups WHERE StockItemID ='$id'";
 
@@ -130,45 +130,37 @@ if(!empty($_SESSION['id'])) {
     $category = $record['StockGroupID'];
 
     $sql = "SELECT StockItemID from stockitemstockgroups WHERE StockGroupID = '$category'";
-
     $result = mysqli_query($databaseConnection, $sql);
-    $resultaat = array();
-    $i = 0;
+
+    $resultaat = [];
     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
         $StockItemID = $row["StockItemID"];
-        $resultaat[$i] = $StockItemID;
-        $i++;
+        $resultaat[] = $StockItemID;
     }
-    echo "<table style='color: #EDF6FF; background-color: #6DAFFE; border-radius 10px; margin: auto'>";
-    $aanbevelen = array_rand($resultaat, 5);
-    foreach ($aanbevelen as $row) {
-        $sql = "SELECT S.StockItemName, S.RecommendedRetailPrice, I.ImagePath FROM stockitems S LEFT JOIN stockitemimages I on S.StockItemID = I.StockItemID WHERE S.StockItemID = '$row'";
+    $aanbevelen = array_rand($resultaat, 8);
+
+    echo "<div class='recommended-product-container'>";
+
+    foreach ($aanbevelen as $id) {
+        $sql = "SELECT S.StockItemName, I.ImagePath FROM stockitems S LEFT JOIN stockitemimages I on S.StockItemID = I.StockItemID WHERE S.StockItemID = '$id'";
         $result = mysqli_query($databaseConnection, $sql);
+
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             $StockItemName = $row['StockItemName'];
-            $RecommendedRetailPrice = $row['RecommendedRetailPrice'];
             $ImagePath = $row['ImagePath'];
 
-            $sql = "SELECT StockItemID FROM stockitems WHERE StockItemName = '$StockItemName'";
-            $Statement = mysqli_prepare($databaseConnection, $sql);
-            mysqli_stmt_execute($Statement);
-            $ReturnableResult = mysqli_stmt_get_result($Statement);
-            $record = mysqli_fetch_assoc($ReturnableResult);
-            $id2 = $record['StockItemID'];
-
-            echo "<tr>
-                <th><!--Name-->
-                    <a style='color: #EDF6FF' href='http://localhost/nerdygadgets/view.php?id=$id2'>$StockItemName</a>
-                </th>
-                <th><!--Image-->
-                    <img src='Public/StockItemIMG/$ImagePath' width='100' alt='Product afbeelding'>
-                </th>
+            echo "
+                <a href='http://localhost/nerdygadgets/view.php?id=$id'>
+                <div class='recommended-product'><!--Name-->
+                    <div class='recommended-product-name'>$StockItemName</div>
+                    <img src='Public/StockItemIMG/$ImagePath' alt='Product afbeelding'>
+                </div> </a>
                 <form method='GET' action='Cart.php'>
-                        <input type='hidden' name='target' value='$id2'>
+                        <input type='hidden' name='target' value='$id'>
                     </form>";
         }
     }
-    echo "</table>";
+    echo "</div>";
 }
 unset($_SESSION['id']);
 
