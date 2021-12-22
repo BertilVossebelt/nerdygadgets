@@ -134,7 +134,13 @@ myFunction()
             <h3>Artikel beschrijving</h3>
             <p><?php print $StockItem['SearchDetails']; ?></p>
         </div>
-        <div class="QuantityText"><?php print $StockItem['QuantityOnHand']; ?></div>
+        <div class="QuantityText"><p><?php print $StockItem['QuantityOnHand'];?>
+
+                <?php if($StockItemID == 220 || 222 || 223 || 224 || 225 || 226 || 227){ ?></p>
+            <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+            <p id= temperature ><script src="temperatures.js"></script></p>
+            <?php } ?>
+        </div>
         <div id="StockItemHeaderLeft">
             <div class="CenterPriceLeft">
                 <div class="CenterPriceLeftChild">
