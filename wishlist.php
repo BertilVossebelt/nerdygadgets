@@ -20,8 +20,8 @@ if (count($wishlist) > 0) {
 
 // This loop creates a table row for every product
 foreach ($wishlist as $id => $item) {
-    if(isset($_GET['target'])) {
-        if($_GET['target'] == $id){
+    if (isset($_GET['target'])) {
+        if ($_GET['target'] == $id) {
             deleteFromWishlist($id);
         }
     } else {
@@ -31,7 +31,7 @@ foreach ($wishlist as $id => $item) {
         $price = $item['SellPrice'];
         $roundedPrice = round($item['SellPrice'], 2);
 //        Table is created
-        if(count($wishlist) != 0) {
+        if (count($wishlist) != 0) {
             echo "<tr>
                 <!--Name-->
                 <th>
@@ -55,6 +55,7 @@ foreach ($wishlist as $id => $item) {
               </tr>";
         }
 
+    }
 }
 
       include __DIR__ . "/footer.php";

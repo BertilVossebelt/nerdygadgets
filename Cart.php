@@ -98,17 +98,19 @@ $value = round($value, 2);
 
 // Add last row and close table
 if (count($cart) > 0) {
-    if($value < 35){
-        print("<tr>
+    if(isset($roundedPrice)) {
+        if ($roundedPrice <= 35) {
+            print("<tr>
             <th>Verzendkosten, vanaf 35 euro gratis verzending</th>
             <th><!--Empty space for image --></th>
             <th><!--Empty space for amount --></th>
             <th>$shippingCost</th>
             </tr>");
-    } else {
-        print("<tr>
+        } else {
+            print("<tr>
             <th>Verzendkosten, vanaf 35 euro gratis verzending</th>           
             </tr>");
+        }
     }
     echo "
             <tr>
