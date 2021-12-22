@@ -491,6 +491,9 @@ ul#ul-class-price li {
 .empty-wishlist {
     text-align: center;
 }
+.empty-cart {
+    text-align: center;
+}
 .wishlist-button {
     color: #6DAFFE;
     height: 60px;
