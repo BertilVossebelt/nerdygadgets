@@ -107,6 +107,7 @@ $ItemName = htmlspecialchars($StockItemName, ENT_QUOTES);
             </div>
         </div>
 
+<<<<<<< HEAD
         <div class="QuantityText"><?php print $StockItem['QuantityOnHand']; ?></div>
         <div id="StockItemHeaderLeft">
             <div class="CenterPriceLeft">
@@ -118,7 +119,6 @@ $ItemName = htmlspecialchars($StockItemName, ENT_QUOTES);
             </div>
         </div>
     </div>
-
     <div>
         <form method="get" action="redirect.php">
             <input type="number" name="stockItemID" value="<?php print($StockItemID) ?>" hidden>
@@ -133,7 +133,6 @@ $ItemName = htmlspecialchars($StockItemName, ENT_QUOTES);
         <h3>Artikel beschrijving</h3>
         <p><?php print $StockItem['SearchDetails']; ?></p>
     </div>
-
     <div id="StockItemSpecifications" style="background-color: #6DAFFE; border-radius: 10px; border-width:0">
         <h3>Artikel specificaties</h3>
         <?php
