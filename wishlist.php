@@ -20,7 +20,7 @@ if (count($wishlist) > 0) {
 
 // This loop creates a table row for every product
 foreach ($wishlist as $id => $item) {
-    if(isset($_GET['target'])) {
+    if(isset($_GET['deleteFromWishlist'])) {
         deleteFromWishlist($id);
     } else {
 //      Table contents are defined and formatted correctly
