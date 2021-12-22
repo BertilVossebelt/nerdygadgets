@@ -177,7 +177,6 @@ ul#ul-class-navigation li {
 #StockItemHeaderLeft {
     float: right;
     text-align: right;
-    position: absolute;
     top: 0;
     right: 0;
     height: 300px;
@@ -493,6 +492,56 @@ ul#ul-class-price li {
     color: #fff;
 }
 
+.empty-wishlist {
+    text-align: center;
+}
+.empty-cart {
+    text-align: center;
+}
+.wishlist-button {
+    color: #6DAFFE;
+    height: 60px;
+    width: 60px;
+    border: none;
+    background-color: #FFFFFF00;
+    cursor: default;
+}
+.wishlist-button i {
+    cursor: pointer;
+}
+.wishlistAlign {
+    position: absolute;
+    font-size: 5vh;
+    top: -80px;
+    height: 100%;
+    right: -160px;
+    width: 200px;
+}
+.wishlistAlignChild {
+    position: relative;
+    top: 40%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+.CartOrderButton {
+    text-align: center;
+}
+.wishlistContents {
+    text-align: center;
+    color: #6DAFFE;
+}
+.CartContents {
+    text-align: center;
+    color: #6DAFFE;
+}
+.wishlist-deletion {
+    color: #FFFFFF;
+    background-color: #6DAFFE00;
+    font-size: 23px;
+}
+.HrefDecoration i.trash {
+    color: #FFFFFF;
+}
 .TextInput {
     height:13px;
     width:13px;
