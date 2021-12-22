@@ -108,7 +108,10 @@ if (count($cart) > 0) {
             </tr>");
         } else {
             print("<tr>
-            <th>Verzendkosten, vanaf 35 euro gratis verzending</th>           
+            <th>Verzendkosten, vanaf 35 euro gratis verzending</th>      
+            <th><!--Empty space for image --></th>
+            <th><!--Empty space for amount --></th>
+            <th>0.00</th>     
             </tr>");
         }
     }
