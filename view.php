@@ -107,7 +107,7 @@ $ItemName = htmlspecialchars($StockItemName, ENT_QUOTES);
             </div>
         </div>
 
-<<<<<<< HEAD
+
         <div class="QuantityText"><?php print $StockItem['QuantityOnHand']; ?></div>
         <div id="StockItemHeaderLeft">
             <div class="CenterPriceLeft">
