@@ -44,8 +44,8 @@ if (count($cart) > 0) {
         <th>Aantal</th>
         <th>Prijs</th>
     <tr>";
-    } else {
-    echo "<br><h4 style='text-align: center;'>Je winkelmand is leeg. <a href='http://localhost/nerdygadgets'><u>Shop nu!</u></a></h4>";
+} else {
+    echo "<br><h1 class='empty-cart'>Je winkelmand is leeg. <a href='http://localhost/nerdygadgets'><u>Shop nu!</u></a></h1>";
 }
 
 // This loop creates a table row for every product
@@ -103,15 +103,17 @@ if (count($cart) > 0) {
 }
 
 
-if (isset($_SESSION['email'])) {
-    echo "<form method='GET' action='Payment.php' class='CartOrderButton'>
+if ($totalAmount != 0) {
+    if (isset($_SESSION['email'])) {
+        echo "<form method='GET' action='Payment.php' class='CartOrderButton'>
             <input type='text' name='value' value='$value' hidden>
             <input style='height: 48px; width: 240px' type='submit' name='submit' value='Bestellen'> 
         </form>";
-} else {
-    echo "<form method='GET' action='Login.php' class='CartOrderButton'>
+    } else {
+        echo "<form method='GET' action='Login.php' class='CartOrderButton'>
             <input style='height: 48px; width: 240px; margin-top: 15px; border-radius: 10px' type='submit' name='submit' value='Bestellen'>
           </form>";
+    }
 }
 ?>
 
