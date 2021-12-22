@@ -11,6 +11,9 @@ include __DIR__ . "/header.php";
                 </div>
                 <ul id="ul-class-price">
                     <li class="HomePagePrice">€30.95</li>
+                    <form method='get' action='RedirectiDeal.php'>
+                        <input class="hover" style='height: 48px; width: 240px' type='submit' name='submit' value='Bestel nu!'>
+                    </form>
                 </ul>
         </div>
         </a>

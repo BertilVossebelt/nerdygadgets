@@ -76,15 +76,15 @@ ul#ul-class-navigation li {
 }
 #Header {
     position: fixed;
-    top:0;
+    top:-30px;
     background-color: #6DAFFE;
     width: 100%;
-    height: 200px;
+    height: 100px;
     z-index: 1;
     border-bottom: 5px solid #437FC7;
 }
 #Content {
-    margin-top: 200px;
+    margin-top: 70px;
     color: #000 !important;
 }
 #FilterFrame {
@@ -236,12 +236,13 @@ ul#ul-class-navigation li {
     height: 200px;
     width: 100%;
     position: absolute;
+    top: -50px;
 }
 #LogoImage {
-    background-image: url("../ProductIMGHighRes/NerdyGadgetsLogo.png");
-    width: 250px;
-    height: 90px;
-    margin: 55px 55px 55px 10%;
+    background-image: url("../Img/NGLogo.png");
+    width: 120px;
+    height: 45px;
+    margin: 85px 55px 55px 10%;
 }
 ul#ul-class li {
     display: inline;
@@ -265,6 +266,7 @@ ul#ul-class-price li {
 }
 .HrefDecoration {
     color: #000000;
+    top: -40px;
 }
 .HrefDecoration i.account {
     color: #EDF6FF;
@@ -398,10 +400,12 @@ ul#ul-class-price li {
     text-transform: uppercase;
     font-weight: bold;
     margin-top: 25px;
+    height: 600px;
 }
 .StockItemPriceText:hover {
     text-decoration: none;
 }
+
 .StockItemID {
     font-family: vortice-concept, sans-serif;
     color: #6DAFFE;
@@ -468,6 +472,7 @@ ul#ul-class-price li {
 #CategoriesBar {
     position: absolute;
     left: 280px;
+
 }
 #PageSelector {
     text-align: center;
@@ -488,7 +493,11 @@ ul#ul-class-price li {
     border: 1px #6DAFFE solid;
     color: #fff;
 }
+
 .empty-wishlist {
+    text-align: center;
+}
+.empty-cart {
     text-align: center;
 }
 .wishlist-button {
@@ -534,4 +543,31 @@ ul#ul-class-price li {
 }
 .HrefDecoration i.trash {
     color: #FFFFFF;
+}
+.TextInput {
+    height:13px;
+    width:13px;
+    margin-left:5px
+}
+.box-shadow {
+    border: 1px solid;
+    padding: 10px;
+    box-shadow: 5px 10px #437FC7;
+}
+.hover {
+    width: 100px;
+    height: 100px;
+    background-color: #6DAFFE;
+    position: relative;
+    animation-name: hover;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes hover {
+    0%   {background-color: #EDF6FF; left:90px; top:0px;}
+    25%  {background-color: #6DAFFE; left:90px; top:20px;}
+    50%  {background-color: #437FC7; left:90px; top:0px;}
+    75%  {background-color: #6DAFFE; left:90px; top:20px;}
+    100% {background-color: #EDF6FF; left:90px; top:0px;}
 }
