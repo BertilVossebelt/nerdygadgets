@@ -349,7 +349,6 @@ function berekenVerkoopPrijs($adviesPrijs, $btw)
     }
     ?>
 </div>
-
 <?php
 
 include __DIR__ . "/footer.php";
