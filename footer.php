@@ -1,10 +1,10 @@
 <!-- de inhoud van dit bestand wordt onderaan elke pagina geplaatst -->
 
 <?php
-if (empty($_SESSION['ip'])) {
+if ($_SESSION['ip']) {
 ?>
 
-<div style='left: 0; bottom: 0; width: 100%; color: black; text-align: center'>
+<div class="footer">
 
     <body>
     <div>
