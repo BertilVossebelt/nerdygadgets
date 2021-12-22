@@ -16,6 +16,7 @@ $cart = getCart();
 $totalAmount = 0;
 $table = null;
 $value = 0;
+$shippingCost = 6.95;
 /*
  * Open table and add first row with column names if cart is filled with products,
  * or display text to indicate that the cart is empty
@@ -55,6 +56,9 @@ foreach ($cart as $id => $item) {
         $roundedPrice = round($item['price'] * $amount, 2);
         $value += $price;
         $totalAmount += $amount;
+        if($value < 35){
+            $value = $value + $shippingCost;
+        }
 
         echo "<tr>
                 <th><!--Name-->
@@ -78,11 +82,25 @@ $value = round($value, 2);
 
 // Add last row and close table
 if (count($cart) > 0) {
-    echo "<tr>
+    if($value < 35){
+        print("<tr>
+            <th>Verzendkosten, vanaf 35 euro gratis verzending</th>
+            <th><!--Empty space for image --></th>
+            <th><!--Empty space for amount --></th>
+            <th>$shippingCost</th>
+            </tr>");
+    } else {
+        print("<tr>
+            <th>Verzendkosten, vanaf 35 euro gratis verzending</th>           
+            </tr>");
+    }
+    echo "
+            <tr>
             <th>Totaal:</th>
             <th><!--Empty space for image--></th>
             <th>$totalAmount</th>
             <th>$value</th>
+            </tr>           
          </table>";
 }
 

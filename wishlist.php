@@ -2,7 +2,7 @@
 include "WishlistFuncties.php";
 include "header.php";
 $wishlist = getWishlist();
-$table = null;
+//$table = null;
 
 // If wishlist is not empty, it creates the top of the table. Otherwise, it creates a message saying the list is empty.
 if (count($wishlist) > 0) {
@@ -21,8 +21,10 @@ if (count($wishlist) > 0) {
 // This loop creates a table row for every product
 foreach ($wishlist as $id => $item) {
     if(isset($_GET['target'])) {
-        deleteFromWishlist($id);
-    } else {
+        if($_GET['target'] == $id){
+            deleteFromWishlist($id);
+        }
+    }
 //      Table contents are defined and formatted correctly
         $StockItemName = $item['StockItemName'];
         $StockItemPath = $item['StockItemPath'];
@@ -52,7 +54,8 @@ foreach ($wishlist as $id => $item) {
                 </th>
               </tr>";
         }
-    }
+
 }
+
       include __DIR__ . "/footer.php";
 ?>
