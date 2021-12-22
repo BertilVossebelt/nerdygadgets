@@ -1,5 +1,20 @@
 <?php
 include __DIR__ . "/header.php";
+
+function berekenVerkoopPrijs($adviesPrijs, $btw)
+{
+    return $btw * $adviesPrijs / 100 + $adviesPrijs;
+}
+
+function getVoorraadTekst($actueleVoorraad)
+{
+    if ($actueleVoorraad > 1000) {
+        return "Ruime voorraad beschikbaar.";
+    } else {
+        return "Voorraad: $actueleVoorraad";
+    }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="nl">
@@ -31,11 +46,12 @@ if (count($cart) > 0) {
         <th>Prijs</th>
     <tr>";
 } else {
-    echo "<br><h4 style='text-align: center;'>Je winkelmand is leeg. <a href='http://localhost/nerdygadgets'><u>Shop nu!</u></a></h4>";
+    echo "<br><h1 class='empty-cart'>Je winkelmand is leeg. <a href='http://localhost/nerdygadgets'><u>Shop nu!</u></a></h1>";
 }
 
 // This loop creates a table row for every product
 foreach ($cart as $id => $item) {
+    $_SESSION['id'] = $id;
     // Use amount from the GET request when the product amount was changed
     isset($_GET['amount']) ? $amount = $_GET['amount'] : $amount = $item['amount'];
 
@@ -105,18 +121,69 @@ if (count($cart) > 0) {
 }
 
 
-if (isset($_SESSION['email'])) {
-    echo "<form method='GET' action='Payment.php' class='CartOrderButton'>
+if ($totalAmount != 0) {
+    if (isset($_SESSION['email'])) {
+        echo "<form method='GET' action='Payment.php' class='CartOrderButton'>
             <input type='text' name='value' value='$value' hidden>
             <input style='height: 48px; width: 240px' type='submit' name='submit' value='Bestellen'> 
         </form>";
-} else {
-    echo "<form method='GET' action='Login.php' class='CartOrderButton'>
+    } else {
+        echo "<form method='GET' action='Login.php' class='CartOrderButton'>
             <input style='height: 48px; width: 240px; margin-top: 15px; border-radius: 10px' type='submit' name='submit' value='Bestellen'>
           </form>";
+    }
 }
+?>
+
+<?php
+if(!empty($_SESSION['id'])) {
+    echo"<h1 style='text-align:center'>Mensen zochten ook</h1>";
+    $id = $_SESSION['id'];
+    $sql = "SELECT StockGroupID FROM stockitemstockgroups WHERE StockItemID ='$id'";
+
+    $Statement = mysqli_prepare($databaseConnection, $sql);
+    mysqli_stmt_execute($Statement);
+    $ReturnableResult = mysqli_stmt_get_result($Statement);
+    $record = mysqli_fetch_assoc($ReturnableResult);
+    $category = $record['StockGroupID'];
+
+    $sql = "SELECT StockItemID from stockitemstockgroups WHERE StockGroupID = '$category'";
+    $result = mysqli_query($databaseConnection, $sql);
+
+    $resultaat = [];
+    while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+        $StockItemID = $row["StockItemID"];
+        $resultaat[] = $StockItemID;
+    }
+    $aanbevelen = array_rand($resultaat, 8);
+
+    echo "<div class='recommended-product-container'>";
+
+    foreach ($aanbevelen as $id) {
+        $sql = "SELECT S.StockItemName, I.ImagePath FROM stockitems S LEFT JOIN stockitemimages I on S.StockItemID = I.StockItemID WHERE S.StockItemID = '$id'";
+        $result = mysqli_query($databaseConnection, $sql);
+
+        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            $StockItemName = $row['StockItemName'];
+            $ImagePath = $row['ImagePath'];
+
+            echo "
+                <a href='http://localhost/nerdygadgets/view.php?id=$id'>
+                <div class='recommended-product'><!--Name-->
+                    <div class='recommended-product-name'>$StockItemName</div>
+                    <img src='Public/StockItemIMG/$ImagePath' alt='Product afbeelding'>
+                </div> </a>
+                <form method='GET' action='Cart.php'>
+                        <input type='hidden' name='target' value='$id'>
+                    </form>";
+        }
+    }
+    echo "</div>";
+}
+unset($_SESSION['id']);
 
 include __DIR__ . "/footer.php";
+//
 ?>
 </body>
 </html>

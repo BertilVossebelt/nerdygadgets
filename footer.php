@@ -1,13 +1,10 @@
 <!-- de inhoud van dit bestand wordt onderaan elke pagina geplaatst -->
-<div style='left: 0; bottom: 0; width: 100%; color: black; text-align: center'>
 
-    <?php
+<?php
+if ($_SESSION['ip']) {
+?>
 
-    if(empty($_SESSION['ip'])){
-        $ip = $_SERVER['REMOTE_ADDR'];
-        $_SESSION['ip'] = $ip;
-
-    ?>
+<div class="footer">
 
     <body>
     <div>
@@ -33,41 +30,43 @@
     </div>
     </body>
         <?php
-    }
             if (isset($_GET['send'])) {
-                $_SESSION['rate'] = $_GET['rate'];
+                    $_SESSION['rate'] = $_GET['rate'];
 
+                    $sql = "SELECT aantal FROM rating";
 
-                $sql = "SELECT aantal FROM rating";
+                    $Statement = mysqli_prepare($databaseConnection, $sql);
+                    mysqli_stmt_execute($Statement);
+                    $ReturnableResult = mysqli_stmt_get_result($Statement);
 
-                $Statement = mysqli_prepare($databaseConnection, $sql);
-                mysqli_stmt_execute($Statement);
-                $ReturnableResult = mysqli_stmt_get_result($Statement);
+                    if (mysqli_num_rows($ReturnableResult) == 1) {
+                        $record = mysqli_fetch_assoc($ReturnableResult);
 
-                if (mysqli_num_rows($ReturnableResult) == 1) {
-                    $record = mysqli_fetch_assoc($ReturnableResult);
+                        $_SESSION['aantal'] = $record['aantal'];
+                        $_SESSION['aantal'] = $_SESSION['aantal'] + 1;
+                    }
+                    $sql = "SELECT rating from rating";
 
-                    $_SESSION['aantal'] = $record['aantal'];
-                    $_SESSION['aantal'] = $_SESSION['aantal'] + 1;
+                    $Statement = mysqli_prepare($databaseConnection, $sql);
+                    mysqli_stmt_execute($Statement);
+                    $ReturnableResult = mysqli_stmt_get_result($Statement);
+
+                    if (mysqli_num_rows($ReturnableResult) == 1) {
+                        $record = mysqli_fetch_assoc($ReturnableResult);
+
+                        $_SESSION['rating'] = $record['rating'];
+                        $_SESSION['rating'] = $_SESSION['rating'] + $_SESSION['rate'];
+                    }
+                    $rating = $_SESSION['rating'];
+                    $aantal = $_SESSION['aantal'];
+
+                    $sql = "UPDATE rating SET rating='$rating', aantal='$aantal'";
+                    $Statement = mysqli_prepare($databaseConnection, $sql);
+                    mysqli_stmt_execute($Statement);
+
+                    $ip = $_SERVER['REMOTE_ADDR'];
+                    $_SESSION['ip'] = $ip;
                 }
-                $sql = "SELECT rating from rating";
-
-                $Statement = mysqli_prepare($databaseConnection, $sql);
-                mysqli_stmt_execute($Statement);
-                $ReturnableResult = mysqli_stmt_get_result($Statement);
-
-                if (mysqli_num_rows($ReturnableResult) == 1) {
-                    $record = mysqli_fetch_assoc($ReturnableResult);
-
-                    $_SESSION['rating'] = $record['rating'];
-                    $_SESSION['rating'] = $_SESSION['rating'] + $_SESSION['rate'];
-                }
-                $rating = $_SESSION['rating'];
-                $aantal = $_SESSION['aantal'];
-
-                $sql = "UPDATE rating SET rating='$rating', aantal='$aantal'";
-                $Statement = mysqli_prepare($databaseConnection, $sql);
-                mysqli_stmt_execute($Statement);
             }
 ?>
 </div>

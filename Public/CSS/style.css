@@ -63,28 +63,34 @@ table tr td {
 }
 ul#ul-class-navigation {
     right: 10px;
-    line-height: 200px;
+    line-height: 80px;
     position: absolute;
+    font-size: 15px;
 }
 ul#ul-class-navigation li {
     color: white;
     display: inline;
     font-family: pt-sans, sans-serif;
-    font-size: 20px;
+    font-size: 15px;
     text-decoration: none;
     text-decoration-color: currentcolor;
 }
+#ul-class {
+    height: 80px
+}
+
 #Header {
     position: fixed;
-    top:0;
+    top:0px;
     background-color: #6DAFFE;
     width: 100%;
-    height: 200px;
+    height: 100px;
     z-index: 1;
     border-bottom: 5px solid #437FC7;
+    margin: auto;
 }
 #Content {
-    margin-top: 200px;
+    margin-top: 100px;
     color: #000 !important;
 }
 #FilterFrame {
@@ -233,23 +239,24 @@ ul#ul-class-navigation li {
     position: absolute;
 }
 #LogoA {
-    height: 200px;
+    height: 80px;
     width: 100%;
     position: absolute;
+    top: -70px;
 }
 #LogoImage {
-    background-image: url("../ProductIMGHighRes/NerdyGadgetsLogo.png");
-    width: 250px;
-    height: 90px;
-    margin: 55px 55px 55px 10%;
+    background-image: url("../Img/NGLogo.png");
+    width: 120px;
+    height: 45px;
+    margin: 85px 55px 55px 10%;
 }
 ul#ul-class li {
     display: inline;
     color: black;
     margin-right: 1em;
-    font-size: 18px;
+    font-size: 15px;
     text-decoration: none;
-    line-height: 200px;
+    line-height: 80px;
 }
 ul#ul-class-price li {
     display: inline;
@@ -265,18 +272,23 @@ ul#ul-class-price li {
 }
 .HrefDecoration {
     color: #000000;
+    top: 0;
 }
 .HrefDecoration i.account {
     color: #EDF6FF;
+    top: 0;
 }
 .HrefDecoration i.wishlist {
     color: #EDF6FF;
+    top: 0;
 }
 .HrefDecoration i.cart {
     color: #EDF6FF;
+    top: 0;
 }
 .HrefDecoration i.search {
     color: #EDF6FF;
+    top: 0;
 }
 
 .HrefDecoration:hover, .HrefDecoration:active {
@@ -398,10 +410,12 @@ ul#ul-class-price li {
     text-transform: uppercase;
     font-weight: bold;
     margin-top: 25px;
+    height: 600px;
 }
 .StockItemPriceText:hover {
     text-decoration: none;
 }
+
 .StockItemID {
     font-family: vortice-concept, sans-serif;
     color: #6DAFFE;
@@ -427,6 +441,7 @@ ul#ul-class-price li {
     margin: 0 auto;
     width: 70%;
     padding-top: 10px;
+    list-style-type: none ;
 }
 .carousel-inner img {
     width: 100%;
@@ -468,6 +483,7 @@ ul#ul-class-price li {
 #CategoriesBar {
     position: absolute;
     left: 280px;
+
 }
 #PageSelector {
     text-align: center;
@@ -488,7 +504,11 @@ ul#ul-class-price li {
     border: 1px #6DAFFE solid;
     color: #fff;
 }
+
 .empty-wishlist {
+    text-align: center;
+}
+.empty-cart {
     text-align: center;
 }
 .wishlist-button {
@@ -534,4 +554,66 @@ ul#ul-class-price li {
 }
 .HrefDecoration i.trash {
     color: #FFFFFF;
+}
+.TextInput {
+    height:13px;
+    width:13px;
+    margin-left:5px
+}
+.box-shadow {
+    border: 1px solid;
+    padding: 10px;
+    box-shadow: 5px 10px #437FC7;
+}
+.hover {
+    width: 100px;
+    height: 100px;
+    background-color: #6DAFFE;
+    position: relative;
+    animation-name: hover;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes hover {
+    0%   {background-color: #EDF6FF; left:90px; top:0px;}
+    25%  {background-color: #6DAFFE; left:90px; top:20px;}
+    50%  {background-color: #437FC7; left:90px; top:0px;}
+    75%  {background-color: #6DAFFE; left:90px; top:20px;}
+    100% {background-color: #EDF6FF; left:90px; top:0px;}
+}
+.footer {
+    left: 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem;
+    color: black;
+    text-align: center;
+}
+.recommended-product {
+    background-color: #6DAFFE;
+    width: 400px;
+    height:100px;
+    float: left;
+    padding: 5px;
+    margin: 5px;
+}
+.recommended-product-name {
+    color: #EDF6FF;
+    float: left;
+    white-space: nowrap;
+    width: 250px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 30px 0;
+}
+.recommended-product img {
+    float: right;
+    width: 90px;
+}
+.recommended-product-container {
+    width: 86vw;
+    margin: 0 auto 0 auto;
+    height: 500px;
 }

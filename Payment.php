@@ -31,27 +31,28 @@ if(isset($_GET['pay'])) setupPayment($_GET['value'], 'Test betaling', '1');
                 $OrderID = $record['max(OrderID)'];
                 $OrderID++;
 
-            $date = date("Y-m-d");
-            $sql = "INSERT INTO orders VALUES('$OrderID', '$klantnummer','$date')";
-
-            $Statement = mysqli_prepare($databaseConnection, $sql);
-            mysqli_stmt_execute($Statement);
-
-            foreach ($cart as $id => $item) {
-                $StockItemName = $item['StockItemName'];
-                $amount = $item['amount'];
-                $sql = "INSERT INTO orderlines VALUES('', '$OrderID', '$id', '$StockItemName', '$amount')";
+                $date = date("Y-m-d");
+                $sql = "INSERT INTO orders VALUES('$OrderID', '$klantnummer','$date')";
 
                 $Statement = mysqli_prepare($databaseConnection, $sql);
                 mysqli_stmt_execute($Statement);
 
-                $sql = "UPDATE stockitemholdings SET QuantityOnHand = QuantityOnHand - '$amount' WHERE StockItemID = '$id' ";
+                foreach ($cart as $id => $item) {
+                    $StockItemName = $item['StockItemName'];
+                    $amount = $item['amount'];
+                    $sql = "INSERT INTO orderlines VALUES('', '$OrderID', '$id', '$StockItemName', '$amount')";
 
-                $Statement = mysqli_prepare($databaseConnection, $sql);
-                mysqli_stmt_execute($Statement);
+                    $Statement = mysqli_prepare($databaseConnection, $sql);
+                    mysqli_stmt_execute($Statement);
+
+                    $sql = "UPDATE stockitemholdings SET QuantityOnHand = QuantityOnHand - '$amount' WHERE StockItemID = '$id' ";
+
+                    $Statement = mysqli_prepare($databaseConnection, $sql);
+                    mysqli_stmt_execute($Statement);
+                }
             }
+            include __DIR__ . "/footer.php";
         }
-        include __DIR__ . "/footer.php";
         ?>
 
 

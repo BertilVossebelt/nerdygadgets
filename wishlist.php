@@ -24,7 +24,7 @@ foreach ($wishlist as $id => $item) {
         if($_GET['target'] == $id){
             deleteFromWishlist($id);
         }
-    }
+    } else {
 //      Table contents are defined and formatted correctly
         $StockItemName = $item['StockItemName'];
         $StockItemPath = $item['StockItemPath'];

@@ -53,7 +53,7 @@ if (isset($_SESSION['email'])){
 
             if (password_verify($wachtwoord, $record['wachtwoord'])) {
                 extractedAccountData($record);
-                echo "<script>window.location = 'Account.php';</script>";
+                echo "<script>window.location = 'iDeal.php';</script>";
             }
         } else {
             echo "Het wachtwoord of email is onjuist.";
