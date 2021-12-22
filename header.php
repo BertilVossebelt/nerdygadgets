@@ -8,6 +8,15 @@ $cart = getCart();
 
 $databaseConnection = connectToDatabase();
 
+$sql = "SELECT rating, aantal FROM rating";
+
+$Statement = mysqli_prepare($databaseConnection, $sql);
+mysqli_stmt_execute($Statement);
+$ReturnableResult = mysqli_stmt_get_result($Statement);
+$record = mysqli_fetch_assoc($ReturnableResult);
+$aantal = $record['aantal'];
+$rating = round($record['rating'] / $aantal, 1);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -56,6 +65,11 @@ $databaseConnection = connectToDatabase();
         </div>
 <!-- code voor US3: zoeken -->
         <ul id="ul-class-navigation">
+
+            <a>
+                <a <i class="fa fa-beoordeling" aria-hidden="true"></i>Klanten beoordelen ons met een <?php echo $rating ?>/5</a>
+            </li>
+
             <li>
                 <a href="wishlist.php" class="HrefDecoration"><i class="fa fa-heart wishlist" aria-hidden="true"></i></a>
             </li>
