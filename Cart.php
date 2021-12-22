@@ -171,6 +171,7 @@ if(!empty($_SESSION['id'])) {
 unset($_SESSION['id']);
 
 include __DIR__ . "/footer.php";
+//
 ?>
 </body>
 </html>
