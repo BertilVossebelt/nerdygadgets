@@ -136,7 +136,7 @@ myFunction()
         </div>
         <div class="QuantityText"><p><?php print $StockItem['QuantityOnHand'];?>
 
-                <?php if($StockItemID == 220 || 222 || 223 || 224 || 225 || 226 || 227){ ?></p>
+                <?php if($StockItemID == 220 || $StockItemID == 222 || $StockItemID == 223 || $StockItemID == 224 || $StockItemID == 225 || $StockItemID == 226 || $StockItemID == 227){ ?></p>
             <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
             <p id= temperature ><script src="temperatures.js"></script></p>
             <?php } ?>
