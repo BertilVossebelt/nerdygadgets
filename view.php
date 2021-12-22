@@ -109,15 +109,6 @@ $ItemName = htmlspecialchars($StockItemName, ENT_QUOTES);
                 <input type="number" name="SellPrice" value="<?php print($StockItemPrice) ?>" hidden>
                 <input type="text" name="StockItemName" value="<?php print($ItemName) ?>" hidden>
                 <input type="text" name="StockItemPath" value="<?php print($StockItemPath) ?>" hidden>
-
-
-                <?php if(isset($StockItemImage[0]["ImagePath"])) {?>
-                 <input type="text" name="StockItemPath" value="<?php print($StockItemPath) ?>" hidden>
-                <?php } else { ?>
-                <input type="text" name="StockItemPath" value="<?php print($BackupImagePath) ?>" hidden>
-                <?php } ?>
-
-
                 <input type="submit" name="submit" value="Voeg toe aan winkelmandje" style="border-width: 0px; box-shadow 10px 10px 8px; border-radius: 10px">
             </form>
         </div>
