@@ -16,11 +16,19 @@ if(!isset($_SESSION['email'])){
 <h4 style='margin-left:700px; margin-bottom:15px'>Email:  <?php echo $_SESSION['email'];?></h4>
 <form method="get">
     <input style='height: 48px; width: 240px; margin-left:700px' type="submit" name="wijzigww" value="Wachtwoord wijzigen">
+    <input style='height: 48px; width: 240px; margin-left:700px' type="submit" name="gegevenswijzigen" value="Gegevens wijzigen">
 </form>
 <?php
+    if(isset($_GET['gegevenswijzigen'])){
+        echo "<script>
+            window.location = 'changeData.php';
+        </script>";
+    }
 
     if(isset($_GET['wijzigww'])){
         header("Location: changePassword.php");
     }
 }
+include __DIR__ . "/footer.php";
 ?>
+

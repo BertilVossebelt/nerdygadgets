@@ -16,15 +16,19 @@ if (isset($_GET['pay'])) setupPayment($_GET['value'], 'Test betaling', '1');
         <button style='width:215px;margin-left:300px' type='submit' name='pay' value='pay'>Betalen</button>
     </form>
     <?php
-    if (isset($_GET['Betalen'])) {
-        $sql = "SELECT max(OrderID) FROM orders";
-        $Statement = mysqli_prepare($databaseConnection, $sql);
-        mysqli_stmt_execute($Statement);
-        $ReturnableResult = mysqli_stmt_get_result($Statement);
-        if (mysqli_num_rows($ReturnableResult) == 1) {
-            $record = mysqli_fetch_assoc($ReturnableResult);
-            $OrderID = $record['max(OrderID)'];
-            $OrderID++;
+        if (isset($_GET['pay'])) {
+            $sql = "SELECT max(OrderID) FROM orders";
+
+            $Statement = mysqli_prepare($databaseConnection, $sql);
+            mysqli_stmt_execute($Statement);
+            $ReturnableResult = mysqli_stmt_get_result($Statement);
+
+            if (mysqli_num_rows($ReturnableResult) == 1) {
+                $record = mysqli_fetch_assoc($ReturnableResult);
+
+                $OrderID = $record['max(OrderID)'];
+                $OrderID++;
+
             $date = date("Y-m-d");
             $sql = "INSERT INTO orders VALUES(
                 '$OrderID', '$klantnummer','$date')";
@@ -44,6 +48,9 @@ if (isset($_GET['pay'])) setupPayment($_GET['value'], 'Test betaling', '1');
             }
         }
     }
+
+    include __DIR__ . "/footer.php";
+
     ?>
 
 

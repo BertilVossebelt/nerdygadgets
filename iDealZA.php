@@ -56,5 +56,5 @@ if (isset($_GET['Bestel'])) {
         </script>";
     */
 }
-
+include __DIR__ . "/footer.php";
 ?>
