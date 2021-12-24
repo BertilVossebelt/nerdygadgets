@@ -1,6 +1,4 @@
 <?php
-include __DIR__ . "/header.php";
-
 function berekenVerkoopPrijs($adviesPrijs, $btw)
 {
     return $btw * $adviesPrijs / 100 + $adviesPrijs;
@@ -78,7 +76,7 @@ foreach ($cart as $id => $item) {
 
         echo "<tr>
                 <th><!--Name-->
-                    <a style='color: #EDF6FF' href='http://localhost/nerdygadgets/view.php?id=$id'>$StockItemName</a>
+                    <a style='color: #EDF6FF' href='http://localhost/nerdygadgets/product?id=$id'>$StockItemName</a>
                 </th>
                 <th><!--Image-->
                     <img src='Public/StockItemIMG/$StockItemPath' width='100' alt='Product afbeelding'>
@@ -128,12 +126,12 @@ if (count($cart) > 0) {
 
 if ($totalAmount != 0) {
     if (isset($_SESSION['email'])) {
-        echo "<form method='GET' action='Payment.php' class='CartOrderButton'>
+        echo "<form method='GET' action='betalen' class='CartOrderButton'>
             <input type='text' name='value' value='$value' hidden>
             <input style='height: 48px; width: 240px' type='submit' name='submit' value='Bestellen'> 
         </form>";
     } else {
-        echo "<form method='GET' action='Login.php' class='CartOrderButton'>
+        echo "<form method='GET' action='login' class='CartOrderButton'>
             <input style='height: 48px; width: 240px; margin-top: 15px; border-radius: 10px' type='submit' name='submit' value='Bestellen'>
           </form>";
     }
@@ -173,7 +171,7 @@ if(!empty($_SESSION['id'])) {
             $ImagePath = $row['ImagePath'];
 
             echo "
-                <a href='http://localhost/nerdygadgets/view.php?id=$id'>
+                <a href='http://localhost/nerdygadgets/product?id=$id'>
                 <div class='recommended-product'><!--Name-->
                     <div class='recommended-product-name'>$StockItemName</div>
                     <img src='Public/StockItemIMG/$ImagePath' alt='Product afbeelding'>
@@ -186,9 +184,6 @@ if(!empty($_SESSION['id'])) {
     echo "</div>";
 }
 unset($_SESSION['id']);
-
-include __DIR__ . "/footer.php";
-//
 ?>
 </body>
 </html>

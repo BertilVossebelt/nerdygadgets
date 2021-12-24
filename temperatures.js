@@ -1,5 +1,5 @@
 setInterval(() => {
-    const request = axios.get('http://localhost/nerdygadgets/temperature_request.php');
+    const request = axios.get('http://localhost/nerdygadgets/Helpers/temperature_request.php');
     // Log errors if needed
     request.catch((error) => {
         console.error(error);
