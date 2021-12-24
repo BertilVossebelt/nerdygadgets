@@ -61,7 +61,7 @@
             </li>
             <?php } if(!empty($_SESSION['email'])){
                 echo "<li>
-                <a href='Log-Uit.php' class='HrefDecoration'><i class='fa fa-user account' aria-hidden='true'></i> Log-Uit</a>
+                <a href='log-uit' class='HrefDecoration'><i class='fa fa-user account' aria-hidden='true'></i> Log-Uit</a>
             </li>";
             } else {
                 echo "<li>
