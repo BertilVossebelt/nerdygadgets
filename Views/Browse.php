@@ -1,7 +1,5 @@
 <!-- dit bestand bevat alle code voor het productoverzicht -->
 <?php
-include __DIR__ . "/header.php";
-
 $ReturnableResult = null;
 $Sort = "SellPrice";
 $SortName = "price_low_high";
@@ -260,7 +258,7 @@ function berekenVerkoopPrijs($adviesPrijs, $btw)
             ?>
             <!--  coderegel 1 van User story: bekijken producten  -->
 
-            <a class="ListItem" href='view.php?id=<?php print $row['StockItemID']; ?>'>
+            <a class="ListItem" href='product?id=<?php print $row['StockItemID']; ?>'>
 
                 <!-- einde coderegel 1 van User story: bekijken producten   -->
                 <div id="ProductFrame">
@@ -349,7 +347,3 @@ function berekenVerkoopPrijs($adviesPrijs, $btw)
     }
     ?>
 </div>
-<?php
-
-include __DIR__ . "/footer.php";
-?>

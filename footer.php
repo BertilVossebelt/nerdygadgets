@@ -7,7 +7,7 @@
         <?php
         if (empty($_SESSION['ip'])) {
         ?>
-        <h3>Met hoeveel sterren beoordeeld u ons?</h3>
+        <h3>Met hoeveel sterren beoordeelt u ons?</h3>
         <form class="rating">
             <input type="radio" id="star5" name="rate" value="5" onchange="this.form.submit()"/>
             <label for="star5" title="text">5 ster</label>
@@ -64,5 +64,10 @@
 </div>
 </div>
 </div>
+<script src="Public/JS/fontawesome.js"></script>
+<script src="Public/JS/jquery.min.js"></script>
+<script src="Public/JS/bootstrap.min.js"></script>
+<script src="Public/JS/popper.min.js"></script>
+<script src="Public/JS/resizer.js"></script>
 </body>
 </html>

@@ -1,6 +1,5 @@
 <?php
 include "database.php";
-include "CartFuncties.php";
 include "env_loader.php";
 $databaseConnection = connectToDatabase();
 //$sql = "select Temperature, max(RecordedWhen) from coldroomtemperatures group by Temperature ";
@@ -19,4 +18,3 @@ print ($record['Temperature']);
 return ($record['Temperature']);
 
 //print("hope this works");
-

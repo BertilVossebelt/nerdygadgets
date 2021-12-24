@@ -1,7 +1,5 @@
 <!-- dit bestand bevat alle code voor de pagina die één product laat zien -->
 <?php
-include __DIR__ . "/header.php";
-
 $StockItem = getStockItem($_GET['id'], $databaseConnection);
 
 // General stock item data
@@ -110,7 +108,7 @@ myFunction()
         <div class="wishlistAlign">
             <div class="wishlistAlignChild">
                 <div>
-                    <form method="get" action="redirectToWishlist.php">
+                    <form method="get" action="../redirectToWishlist.php">
                         <input type="number" name="stockItemID" value="<?php print($StockItemID) ?>" hidden/>
                         <input type="number" name="SellPrice" value="<?php print($StockItemPrice) ?>" hidden/>
                         <input type="text" name="StockItemName" value="<?php print($ItemName) ?>" hidden/>
@@ -121,7 +119,7 @@ myFunction()
             </div>
         </div>
         <div>
-            <form method="get" action="redirect.php">
+            <form method="get" action="redirect">
                 <input type="number" name="stockItemID" value="<?php print($StockItemID) ?>" hidden>
                 <input type="number" name="SellPrice" value="<?php print($StockItemPrice) ?>" hidden>
                 <input type="text" name="StockItemName" value="<?php print($ItemName) ?>" hidden>
@@ -138,7 +136,7 @@ myFunction()
 
                 <?php if($StockItemID == 220 || $StockItemID == 222 || $StockItemID == 223 || $StockItemID == 224 || $StockItemID == 225 || $StockItemID == 226 || $StockItemID == 227){ ?></p>
             <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-            <p id= temperature ><script src="temperatures.js"></script></p>
+            <p id= temperature ><script src="../temperatures.js"></script></p>
             <?php } ?>
         </div>
         <div id="StockItemHeaderLeft">
@@ -187,5 +185,4 @@ myFunction()
             ?>
         </div>
     <?php
-    include __DIR__ . "/footer.php";
 ?>

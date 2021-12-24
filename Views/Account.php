@@ -1,6 +1,4 @@
 <?php
-include __DIR__ . "/header.php";
-
 if(!isset($_SESSION['email'])){
     echo "U bent nog niet ingelogd.";
     echo "<form method='get' action='Login.php'>
@@ -19,16 +17,7 @@ if(!isset($_SESSION['email'])){
     <input style='height: 48px; width: 240px; margin-left:700px' type="submit" name="gegevenswijzigen" value="Gegevens wijzigen">
 </form>
 <?php
-    if(isset($_GET['gegevenswijzigen'])){
-        echo "<script>
-            window.location = 'changeData.php';
-        </script>";
-    }
-
-    if(isset($_GET['wijzigww'])){
-        header("Location: changePassword.php");
-    }
+    if(isset($_GET['gegevenswijzigen'])) echo "<script>window.location = 'changeData.php';</script>";
+    if(isset($_GET['wijzigww'])) echo "<script>window.location = 'wachtwoord-wijzigen';</script>";
 }
-include __DIR__ . "/footer.php";
 ?>
-

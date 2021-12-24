@@ -1,6 +1,5 @@
 <!-- dit bestand bevat alle code voor de pagina die categorieën laat zien -->
 <?php
-include __DIR__ . "/header.php";
 $StockGroups = getStockGroups($databaseConnection);
 ?>
 <div id="Wrap">
@@ -9,7 +8,7 @@ $StockGroups = getStockGroups($databaseConnection);
         foreach ($StockGroups as $StockGroup) {
             if ($i < 6) {
                 ?>
-                <a href="<?php print "browse.php?category_id=";
+                <a href="<?php print "bladeren?category_id=";
                 print $StockGroup["StockGroupID"]; ?>">
                     <div id="StockGroup<?php print $i + 1; ?>"
                          style="background-image: url('Public/StockGroupIMG/<?php print $StockGroup["ImagePath"]; ?>')"
@@ -21,5 +20,5 @@ $StockGroups = getStockGroups($databaseConnection);
             }
             $i++;
         }
-    } include __DIR__ . "/footer.php";?>
+    }?>
 </div>

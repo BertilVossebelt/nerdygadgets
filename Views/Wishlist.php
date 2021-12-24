@@ -1,6 +1,4 @@
 <?php
-include "WishlistFuncties.php";
-include "header.php";
 $wishlist = getWishlist();
 //$table = null;
 
@@ -35,7 +33,7 @@ foreach ($wishlist as $id => $item) {
             echo "<tr>
                 <!--Name-->
                 <th>
-                    <a style='color: #EDF6FF' href='http://localhost/nerdygadgets/view.php?id=$id'>$StockItemName</a>
+                    <a style='color: #EDF6FF' href='http://localhost/nerdygadgets/product?id=$id'>$StockItemName</a>
                 </th>
                 <!--Image-->
                 <th>
@@ -47,7 +45,7 @@ foreach ($wishlist as $id => $item) {
                 </th>
                 <!--DeleteButton-->
                 <th style='text-align: center'>
-                    <form method='get' action='wishlist.php'>
+                    <form method='get' action='verlanglijstje'>
                     <button type='submit' name='deleteFromWishlist' class='wishlist-deletion'><i class='fa fa-close' aria-hidden='true'></i></button>   
                     <input type='hidden' name='target' value='$id'>
                     </form>
@@ -57,6 +55,4 @@ foreach ($wishlist as $id => $item) {
 
     }
 }
-
-      include __DIR__ . "/footer.php";
 ?>

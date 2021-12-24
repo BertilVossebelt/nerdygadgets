@@ -1,25 +1,49 @@
-<!-- dit is het bestand dat wordt geladen zodra je naar de website gaat -->
 <?php
-include __DIR__ . "/header.php";
+include "database.php";
+include "env_loader.php";
+include "CartFuncties.php";
+include "WishlistFuncties.php";
+
+$cart = getCart();
+
+$databaseConnection = connectToDatabase();
+
+$sql = "SELECT rating, aantal FROM rating";
+
+$Statement = mysqli_prepare($databaseConnection, $sql);
+mysqli_stmt_execute($Statement);
+$ReturnableResult = mysqli_stmt_get_result($Statement);
+$record = mysqli_fetch_assoc($ReturnableResult);
+$aantal = $record['aantal'];
+$rating = round($record['rating'] / $aantal, 1);
 ?>
-<div class="IndexStyle">
-    <div class="col-11">
-        <div class="TextPrice">
-            <a href="view.php?id=93">
-                <div class="TextMain">
-                    "The Gu" red shirt XML tag t-shirt (Black) M
-                </div>
-                <ul id="ul-class-price">
-                    <li class="HomePagePrice">€30.95</li>
-                    <form method='get' action='RedirectiDeal.php'>
-                        <input class="hover" style='height: 48px; width: 240px' type='submit' name='submit' value='Bestel nu!'>
-                    </form>
-                </ul>
-        </div>
-        </a>
-        <div class="HomePageStockItemPicture"></div>
-    </div>
-</div>
+<html lang="nl">
+<head>
+    <title>NerdyGadgets</title>
+
+    <meta name="viewport" content="width=device-width">
+
+    <!-- Javascript -->
+
+    <!-- Style sheets-->
+    <link rel="stylesheet" href="Public/CSS/style.css" type="text/css">
+    <link rel="stylesheet" href="Public/CSS/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="Public/CSS/typekit.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title></title>
+</head>
+<body>
+<?php include __DIR__ . "/header.php"; ?>
+
 <?php
-include __DIR__ . "/footer.php";
+require_once "./Routes/router.php";
+
+$variables = ['databaseConnection' => $databaseConnection];
+
+// Start router
+(new Routes\router)->setup($variables);
 ?>
+
+<?php include __DIR__ . "/footer.php"; ?>
+</body>
+</html>

@@ -1,35 +1,12 @@
 <!-- de inhoud van dit bestand wordt bovenaan elke pagina geplaatst -->
-<?php
-include "database.php";
-include "CartFuncties.php";
-include "env_loader.php";
-$cart = getCart();
-
-
-$databaseConnection = connectToDatabase();
-
-$sql = "SELECT rating, aantal FROM rating";
-
-$Statement = mysqli_prepare($databaseConnection, $sql);
-mysqli_stmt_execute($Statement);
-$ReturnableResult = mysqli_stmt_get_result($Statement);
-$record = mysqli_fetch_assoc($ReturnableResult);
-$aantal = $record['aantal'];
-$rating = round($record['rating'] / $aantal, 1);
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <title>NerdyGadgets</title>
 
+    <meta name="viewport" content="width=device-width">
 
     <!-- Javascript -->
-    <script src="Public/JS/fontawesome.js"></script>
-    <script src="Public/JS/jquery.min.js"></script>
-    <script src="Public/JS/bootstrap.min.js"></script>
-    <script src="Public/JS/popper.min.js"></script>
-    <script src="Public/JS/resizer.js"></script>
 
     <!-- Style sheets-->
     <link rel="stylesheet" href="Public/CSS/style.css" type="text/css">
@@ -51,7 +28,7 @@ $rating = round($record['rating'] / $aantal, 1);
                 foreach ($HeaderStockGroups as $HeaderStockGroup) {
                     ?>
                     <li>
-                        <a href="browse.php?category_id=<?php print $HeaderStockGroup['StockGroupID']; ?>"
+                        <a href="bladeren?category_id=<?php print $HeaderStockGroup['StockGroupID']; ?>"
                            class="HrefDecoration"><?php print $HeaderStockGroup['StockGroupName']; ?></a>
                     </li>
                     <?php
@@ -59,7 +36,7 @@ $rating = round($record['rating'] / $aantal, 1);
                 ?>
 
                 <li>
-                    <a href="categories.php" class="HrefDecoration">Alle categorieën</a>
+                    <a href="categorieen" class="HrefDecoration">Alle categorieën</a>
                 </li>
             </ul>
         </div>
@@ -71,16 +48,16 @@ $rating = round($record['rating'] / $aantal, 1);
             </li>
 
             <li>
-                <a href="wishlist.php" class="HrefDecoration"><i class="fa fa-heart wishlist" aria-hidden="true"></i></a>
+                <a href="verlanglijstje" class="HrefDecoration"><i class="fa fa-heart wishlist" aria-hidden="true"></i></a>
             </li>
             <li>
-                <a href="Cart.php" class="HrefDecoration"><i class="fa fa-shopping-cart cart" aria-hidden="true"></i>  Winkelwagen <?php if(count($cart) != 0) print("[".count($cart)."]")?></a>
+                <a href="winkelmandje" class="HrefDecoration"><i class="fa fa-shopping-cart cart" aria-hidden="true"></i>  Winkelwagen <?php if(count($cart) != 0) print("[".count($cart)."]")?></a>
             </li>
 
             <?php if(!empty($_SESSION)){
                 ?>
             <li>
-                <a href='Account.php' class='HrefDecoration'><i class='fa fa-user account' aria-hidden='true'></i> Account</a>
+                <a href='account' class='HrefDecoration'><i class='fa fa-user account' aria-hidden='true'></i> Account</a>
             </li>
             <?php } if(!empty($_SESSION['email'])){
                 echo "<li>
@@ -88,11 +65,11 @@ $rating = round($record['rating'] / $aantal, 1);
             </li>";
             } else {
                 echo "<li>
-                <a href='Login.php' class='HrefDecoration'><i class='fa fa-user account' aria-hidden='true'></i> Log-In</a>
-            </li>" ;
+                <a href='login' class='HrefDecoration'><i class='fa fa-user account' aria-hidden='true'></i> Log-In</a>
+            </li>";
             } ?>
             <li>
-                <a href="browse.php" class="HrefDecoration"><i class="fas fa-search search"></i> Zoeken</a>
+                <a href="bladeren" class="HrefDecoration"><i class="fas fa-search search"></i> Zoeken</a>
             </li>
         </ul>
 

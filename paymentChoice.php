@@ -53,7 +53,7 @@ if (isset($_SESSION['email'])){
                 $_SESSION['toevoeging'] = $record['toevoeging'];
                 $_SESSION['woonplaats'] = $record['woonplaats'];
                 echo "<script>
-        window.location = 'categories.php';
+        window.location = 'Categories.php';
     </script>";
             }
         } else {

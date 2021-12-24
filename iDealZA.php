@@ -52,7 +52,7 @@ if (isset($_GET['Bestel'])) {
     mysqli_stmt_execute($Statement);
     /*
          echo "<script>
-            window.location = 'categories.php';
+            window.location = 'Categories.php';
         </script>";
     */
 }
