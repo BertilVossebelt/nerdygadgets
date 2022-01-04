@@ -1,6 +1,5 @@
 <?php
-include __DIR__ . "/header.php";
-include "WishlistFuncties.php";
+include "../Helpers/WishlistFuncties.php";
 
 if (isset($_GET["wishlist"])) addProductToWishlist($_GET["stockItemID"], $_GET['SellPrice'], $_GET['StockItemName'], $_GET['StockItemPath']);
 ?>

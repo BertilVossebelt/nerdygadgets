@@ -14,14 +14,6 @@ function getVoorraadTekst($actueleVoorraad)
 }
 
 ?>
-<!DOCTYPE html>
-<html lang="nl">
-<head>
-    <meta charset="UTF-8">
-</head>
-<body>
-<h1 style='color: #6DAFFE; border-radius: 10px; text-align: center'></h1>
-
 <?php
 // Prepare variables
 $cart = getCart();
@@ -44,7 +36,7 @@ if (count($cart) > 0) {
         <th>Prijs</th>
     <tr>";
 } else {
-    echo "<br><h1 class='empty-cart'>Je winkelmand is leeg. <a href='http://localhost/nerdygadgets'><u>Shop nu!</u></a></h1>";
+    echo "<br><h4 class='empty-cart'>Je winkelmand is leeg. <a href='http://localhost/nerdygadgets'>Shop nu!</a></h4>";
 }
 
 // This loop creates a table row for every product
@@ -82,7 +74,7 @@ foreach ($cart as $id => $item) {
                     <img src='Public/StockItemIMG/$StockItemPath' width='100' alt='Product afbeelding'>
                 </th>
                 <th><!--Amount input-->
-                    <form method='GET' action='Cart.php'>
+                    <form method='GET' action='winkelmandje'>
                         <input type='number' name='amount' value='$amount' size='1' style='height:40px; width:60px'>
                         <input type='hidden' name='target' value='$id'>
                     </form>
@@ -176,7 +168,7 @@ if(!empty($_SESSION['id'])) {
                     <div class='recommended-product-name'>$StockItemName</div>
                     <img src='Public/StockItemIMG/$ImagePath' alt='Product afbeelding'>
                 </div> </a>
-                <form method='GET' action='Cart.php'>
+                <form method='GET' action='winkelmandje'>
                         <input type='hidden' name='target' value='$id'>
                     </form>";
         }
@@ -185,5 +177,3 @@ if(!empty($_SESSION['id'])) {
 }
 unset($_SESSION['id']);
 ?>
-</body>
-</html>

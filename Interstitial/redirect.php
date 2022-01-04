@@ -1,4 +1,6 @@
 <?php
+include "../Helpers/CartFuncties.php";
+
 if (isset($_GET["submit"])) addProductToCart($_GET["stockItemID"], $_GET['SellPrice'], $_GET['StockItemName'], $_GET['StockItemPath']);
 ?>
 

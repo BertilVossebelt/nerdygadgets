@@ -1,12 +1,10 @@
 <?php
-include __DIR__ . "/header.php";
-include "Extracted.php";
-require_once("database.php");
+include "Helpers/Extracted.php";
 
 ?>
 <h1 style='margin-left:600px'>Account aanmaken</h1>
-<div>
-    <form style='border-radius: 20px; margin-left: 600px;margin-right: 600px; background-color: #6DAFFE' method="get">
+<div style="height: 680px">
+    <form class="box-shadow" style='border-radius: 20px; margin-left: 600px;margin-right: 600px; background-color: #6DAFFE' method="get">
         <label style='margin-bottom:0px' for="Aanhef">Aanhef</label> <br>
         <input style='margin-bottom:0px; height:13px; width:13px' type="radio" name="Aanhef" required> Dhr.
         <input style='margin-bottom:0px; height:13px; width:13px; margin-left:5px' type="radio" name="Aanhef" required> Mevr. <br>
@@ -61,7 +59,7 @@ require_once("database.php");
             if (mysqli_num_rows($ReturnableResult) == 1) {
                 $record = mysqli_fetch_assoc($ReturnableResult);
                 extractedAccountData($record);
-                echo "<script>window.location = 'Account.php';</script>";
+                echo "<script>window.location = 'account';</script>";
             }
         }
         ?>

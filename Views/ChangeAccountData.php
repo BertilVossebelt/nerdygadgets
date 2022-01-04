@@ -1,8 +1,8 @@
 <?php
-include __DIR__ . "/header.php";
+include "Helpers/Extracted.php";
 ?>
 
-<form style='border-radius: 20px; margin-left: 600px;margin-right: 600px; background-color: #6DAFFE' method="get">
+<form class="box-shadow" style='border-radius: 20px; margin: 50px 600px 0 600px; background-color: #6DAFFE' method="get">
     <label style='margin-bottom:0px' for="Voornaam">Voornaam:</label><br>
     <input style='height:40px; width:300px; margin-bottom:10px' type="text" name="Voornaam" value="<?php echo $_SESSION['voornaam']; ?>" required> <br>
     <label style='margin-bottom:0px' for="Tussenvoegsel">Tussenvoegsel (optioneel):</label><br>
@@ -48,20 +48,9 @@ if(isset($_GET['wijzig'])) {
 
         if (mysqli_num_rows($ReturnableResult) == 1) {
             $record = mysqli_fetch_assoc($ReturnableResult);
-            $_SESSION['email'] = $record['email'];
-            $_SESSION['klantnummer'] = $record['klantnummer'];
-            $_SESSION['voornaam'] = $record['voornaam'];
-            $_SESSION['tussenvoegsel'] = $record['tussenvoegsel'];
-            $_SESSION['achternaam'] = $record['achternaam'];
-            $_SESSION['postcode'] = $record['postcode'];
-            $_SESSION['huisnummer'] = $record['huisnummer'];
-            $_SESSION['toevoeging'] = $record['toevoeging'];
-            $_SESSION['woonplaats'] = $record['woonplaats'];
+            extractedAccountData($record);
         }
-        echo "<script>
-        window.location = 'Account.php'
-    </script>";
+        echo "<script>window.location = 'account'</script>";
     }
 }
-include __DIR__ . "/footer.php";
 ?>

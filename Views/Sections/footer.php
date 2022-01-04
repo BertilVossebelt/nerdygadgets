@@ -2,12 +2,12 @@
 
 </div>
 </div>
+
 <div class="footer">
-    <div>
         <?php
         if (empty($_SESSION['ip'])) {
         ?>
-        <h3>Met hoeveel sterren beoordeelt u ons?</h3>
+        <h5>Met hoeveel sterren beoordeelt u ons?</h5>
         <form class="rating">
             <input type="radio" id="star5" name="rate" value="5" onchange="this.form.submit()"/>
             <label for="star5" title="text">5 ster</label>
@@ -20,8 +20,11 @@
             <input type="radio" id="star1" name="rate" value="1" onchange="this.form.submit()"/>
             <label for="star1" title="text">1 ster</label>
         </form>
-    </div>
-    <?php
+</div>
+</div>
+</div>
+
+<?php
     if (isset($_GET['rate'])) {
         $_SESSION['rate'] = $_GET['rate'];
 
@@ -61,13 +64,5 @@
     }
     }
     ?>
-</div>
-</div>
-</div>
-<script src="Public/JS/fontawesome.js"></script>
-<script src="Public/JS/jquery.min.js"></script>
-<script src="Public/JS/bootstrap.min.js"></script>
-<script src="Public/JS/popper.min.js"></script>
-<script src="Public/JS/resizer.js"></script>
 </body>
 </html>

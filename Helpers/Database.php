@@ -1,5 +1,6 @@
 <!-- dit bestand bevat alle code die verbinding maakt met de database -->
 <?php
+include "env_loader.php";
 
 function connectToDatabase() {
     $Connection = null;

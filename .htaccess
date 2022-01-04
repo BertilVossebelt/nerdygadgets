@@ -14,3 +14,12 @@
         SetOutputFilter DEFLATE
     </filesMatch>
 </IfModule>
+
+<IfModule mod_headers.c>
+  <filesMatch ".(jpg|jpeg|png)$">
+    Header set Cache-Control "max-age=2678400, public"
+  </filesMatch>
+  <filesMatch ".(css|js|html)$">
+    Header set Cache-Control "max-age=1209600, public"
+  </filesMatch>
+</IfModule>

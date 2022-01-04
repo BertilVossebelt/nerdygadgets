@@ -1,25 +1,22 @@
+<?php
+$sql = "SELECT rating, aantal FROM rating";
+
+$Statement = mysqli_prepare($databaseConnection, $sql);
+mysqli_stmt_execute($Statement);
+$ReturnableResult = mysqli_stmt_get_result($Statement);
+$record = mysqli_fetch_assoc($ReturnableResult);
+$aantal = $record['aantal'];
+$rating = round($record['rating'] / $aantal, 1);
+?>
 <!-- de inhoud van dit bestand wordt bovenaan elke pagina geplaatst -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>NerdyGadgets</title>
 
-    <meta name="viewport" content="width=device-width">
-
-    <!-- Javascript -->
-
-    <!-- Style sheets-->
-    <link rel="stylesheet" href="Public/CSS/style.css" type="text/css">
-    <link rel="stylesheet" href="Public/CSS/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="Public/CSS/typekit.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-<body>
 <div class="Background">
     <div class="row" id="Header">
-        <div class="col-2"><a href="./" id="LogoA">
+        <div class="col-2">
+            <a href="/nerdygadgets" id="Logo" aria-label="NerdyGadgets logo">
                 <div id="LogoImage"></div>
-            </a></div>
+            </a>
+        </div>
         <div class="col-8" id="CategoriesBar">
             <ul id="ul-class">
                 <?php
@@ -36,22 +33,21 @@
                 ?>
 
                 <li>
-                    <a href="categorieen" class="HrefDecoration">Alle categorieën</a>
+                    <a href="categorieen" class="HrefDecoration">Categorieën</a>
                 </li>
             </ul>
         </div>
 <!-- code voor US3: zoeken -->
         <ul id="ul-class-navigation">
-
-            <a>
-                <a <i class="fa fa-beoordeling" aria-hidden="true"></i>Klanten beoordelen ons met een <?php echo $rating ?>/5</a>
+            <li>
+                <p class="fa beoordeling">Klanten beoordelen ons met <?php echo $rating ?>/5!</p>
             </li>
 
             <li>
-                <a href="verlanglijstje" class="HrefDecoration"><i class="fa fa-heart wishlist" aria-hidden="true"></i></a>
+                <a href="verlanglijstje" class="HrefDecoration"><i class="fa fa-heart wishlist" aria-hidden="true"></i> Verlanglijstje</a>
             </li>
             <li>
-                <a href="winkelmandje" class="HrefDecoration"><i class="fa fa-shopping-cart cart" aria-hidden="true"></i>  Winkelwagen <?php if(count($cart) != 0) print("[".count($cart)."]")?></a>
+                <a href="winkelmandje" class="HrefDecoration"><i class="fa fa-shopping-cart cart" aria-hidden="true"></i> Winkelwagen <?php if(count($cart) != 0) print("[".count($cart)."]")?></a>
             </li>
 
             <?php if(!empty($_SESSION)){
@@ -68,9 +64,6 @@
                 <a href='login' class='HrefDecoration'><i class='fa fa-user account' aria-hidden='true'></i> Log-In</a>
             </li>";
             } ?>
-            <li>
-                <a href="bladeren" class="HrefDecoration"><i class="fas fa-search search"></i> Zoeken</a>
-            </li>
         </ul>
 
 <!-- einde code voor US3 zoeken -->
