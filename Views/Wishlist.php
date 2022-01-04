@@ -13,7 +13,7 @@ if (count($wishlist) > 0) {
         <th>Verwijderen</th>
     <tr>";
 } else {
-    echo "<br><h1 class='empty-wishlist'>Je verlanglijstje is leeg. <a href='http://localhost/nerdygadgets'><u>Shop nu!</u></a></h1>";
+    echo "<br><h4 class='empty-wishlist'>Je verlanglijstje is leeg. <a href='http://localhost/nerdygadgets'><u>Shop nu!</u></a></h4>";
 }
 
 // This loop creates a table row for every product
@@ -50,9 +50,8 @@ foreach ($wishlist as $id => $item) {
                     <input type='hidden' name='target' value='$id'>
                     </form>
                 </th>
-              </tr>";
+              </tr></table>";
         }
 
     }
 }
-?>

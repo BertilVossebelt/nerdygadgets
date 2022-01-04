@@ -1,5 +1,5 @@
 <?php
-include "Helpers/database.php";
+include "Helpers/Database.php";
 
 $databaseConnection = connectToDatabase();
 

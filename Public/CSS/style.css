@@ -12,7 +12,6 @@ body {
     src: url(/Public/fonts/mmrtext.ttf);
 }
 select {
-    margin: 50px;
     width: 100%;
     padding: 5px 35px 5px 5px;
     font-size: 16px;
@@ -27,7 +26,6 @@ select {
 a {
     text-decoration: none;
     position: relative;
-    color:#FFFFFF;
 }
 a:hover {
      text-decoration: none !important;
@@ -84,7 +82,7 @@ ul#ul-class-navigation li {
     top:0;
     background-color: #6DAFFE;
     width: 100%;
-    height: 100px;
+    height: 80px;
     z-index: 1;
     border-bottom: 5px solid #437FC7;
     margin: auto;
@@ -94,17 +92,15 @@ ul#ul-class-navigation li {
     color: #000 !important;
 }
 #SubContent {
-    min-height: calc(100vh - 100px - 240px);
+    min-height: calc(100vh - 262px);
 }
 #FilterFrame {
     position: fixed;
     width: 19%;
     background-color: #FFFFFF;
     float: left;
-    top:216px;
-    border: 1px solid #6DAFFE;
-    margin-left: 5px;
-    margin-top: 10px;
+    top: 125px;
+    margin-left: 10px;
     padding: 20px;
 }
 #ResultsArea.Browse  {
@@ -239,7 +235,7 @@ ul#ul-class-navigation li {
     background-color: #FFF;
     width: 100%;
 }
-#LogoA {
+#Logo {
     height: 80px;
     width: 100%;
     position: absolute;
@@ -255,7 +251,7 @@ ul#ul-class li {
     display: inline;
     color: black;
     margin-right: 1em;
-    font-size: 15px;
+    font-size: 14.5px;
     text-decoration: none;
     line-height: 80px;
 }
@@ -263,7 +259,6 @@ ul#ul-class-price li {
     display: inline;
 }
 .TextPrice {
-    margin-top: 16%;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -306,7 +301,7 @@ ul#ul-class-price li {
     margin-left: 10%;
 }
 .HomePagePrice {
-    color: #6DAFFE;
+    color: #427fc7;
     font-family: vortice-concept, sans-serif;
     font-size: 50px;
     text-transform: uppercase;
@@ -483,7 +478,7 @@ ul#ul-class-price li {
 }
 #CategoriesBar {
     position: absolute;
-    left: 280px;
+    left: 140px;
 
 }
 #PageSelector {
@@ -585,12 +580,12 @@ ul#ul-class-price li {
 }
 .footer {
     width: 100%;
-    height: 230px;
+    height: 140px;
     color: black;
     text-align: center;
     background-color: #eee;
-    clear: both;
-    padding: 20px;
+    padding: 35px;
+    margin-top: 20px;
 
     position: relative;
     bottom: 0;
@@ -598,7 +593,7 @@ ul#ul-class-price li {
 .rating {
     width: 170px;
     margin: 0 auto 0 auto;
-    height: 146px;
+    height: 50px;
     padding: 0 10px;
 }
 .rating:not(:checked) > input {
@@ -649,4 +644,24 @@ ul#ul-class-price li {
     width: 86vw;
     margin: 0 auto 0 auto;
     height: 250px;
+}
+.pr-shop-button {
+    border-width: 0;
+    box-shadow: 3px 3px 8px #00000050;
+    border-radius: 10px;
+    margin: 20px 0 10px 0;
+    background-color: #5b8dc9;
+    color: #fff;
+}
+
+.pr-shop-button:hover {
+    background-color: #5c9dea;
+    color: #fff;
+}
+
+.beoordeling {
+    color: #000;
+    margin-right: 3px;
+    font-weight: normal !important;
+    font-size: 15px !important;
 }
