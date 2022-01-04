@@ -1,7 +1,5 @@
 <!-- dit bestand bevat alle code voor de pagina die één product laat zien -->
 <?php
-include __DIR__ . "/header.php";
-
 $StockItem = getStockItem($_GET['id'], $databaseConnection);
 
 // General stock item data
@@ -110,7 +108,7 @@ myFunction()
         <div class="wishlistAlign">
             <div class="wishlistAlignChild">
                 <div>
-                    <form method="get" action="redirectToWishlist.php">
+                    <form method="get" action="Interstitial/redirectToWishlist.php">
                         <input type="number" name="stockItemID" value="<?php print($StockItemID) ?>" hidden/>
                         <input type="number" name="SellPrice" value="<?php print($StockItemPrice) ?>" hidden/>
                         <input type="text" name="StockItemName" value="<?php print($ItemName) ?>" hidden/>
@@ -120,38 +118,38 @@ myFunction()
                 </div>
             </div>
         </div>
+        <div>
+            <form method="get" action="Interstitial/redirect.php">
+                <input type="number" name="stockItemID" value="<?php print($StockItemID) ?>" hidden>
+                <input type="number" name="SellPrice" value="<?php print($StockItemPrice) ?>" hidden>
+                <input type="text" name="StockItemName" value="<?php print($ItemName) ?>" hidden>
+                <input type="text" name="StockItemPath" value="<?php print($StockItemPath) ?>" hidden>
+                <input type="submit" name="submit" value="Voeg toe aan winkelmandje"
+                       class="pr-shop-button">
+            </form>
+        </div>
+        <div id="StockItemDescription" class="box-shadow" style="background-color: #6DAFFE; border-radius: 10px; border-width: 0px">
+            <h3>Artikel beschrijving</h3>
+            <p><?php print $StockItem['SearchDetails']; ?></p>
+        </div>
+        <div class="QuantityText"><p><?php print $StockItem['QuantityOnHand'];?>
 
-        <div class="QuantityText"><?php print $StockItem['QuantityOnHand']; ?></div>
+                <?php if($StockItemID == 220 || $StockItemID == 222 || $StockItemID == 223 || $StockItemID == 224 || $StockItemID == 225 || $StockItemID == 226 || $StockItemID == 227){ ?></p>
+            <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+            <p id= temperature ><script src="temperatures.js"></script></p>
+            <?php } ?>
+        </div>
         <div id="StockItemHeaderLeft">
             <div class="CenterPriceLeft">
                 <div class="CenterPriceLeftChild">
                     <p class="StockItemPriceText"><b><?php print sprintf("€ %.2f", $StockItem["SellPrice"]); ?></b>
                     </p>
-                    <h6 style="color: #6DAFFE"> Inclusief BTW </h6>
                 </div>
             </div>
         </div>
     </div>
-
-    <div>
-        <form method="get" action="redirect.php">
-            <input type="number" name="stockItemID" value="<?php print($StockItemID) ?>" hidden>
-            <input type="number" name="SellPrice" value="<?php print($StockItemPrice) ?>" hidden>
-            <input type="text" name="StockItemName" value="<?php print($ItemName) ?>" hidden>
-            <input type="text" name="StockItemPath" value="<?php print($StockItemPath) ?>" hidden>
-            <input type="submit" name="submit" value="Voeg toe aan winkelmandje"
-                   style="border-width:0; box-shadow 10px 10px 8px; border-radius: 10px">
-        </form>
-    </div>
-    <div id="StockItemDescription" style="background-color: #6DAFFE; border-radius: 10px; border-width:0">
-        <h3>Artikel beschrijving</h3>
-        <p><?php print $StockItem['SearchDetails']; ?></p>
-    </div>
-
-    <div id="StockItemSpecifications" style="background-color: #6DAFFE; border-radius: 10px; border-width:0">
+    <div id="StockItemSpecifications" class="box-shadow" style="background-color: #6DAFFE; border-radius: 10px; border-width:0px">
         <h3>Artikel specificaties</h3>
-        <?php
-        ?>
 
         <?php
         $CustomFields = json_decode($StockItem['CustomFields'], true);
@@ -187,5 +185,4 @@ myFunction()
             ?>
         </div>
     <?php
-    include __DIR__ . "/footer.php";
 ?>
